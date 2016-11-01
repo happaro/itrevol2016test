@@ -23,6 +23,7 @@ public class MapController : MonoBehaviour
 	void Start () 
 	{
 		InitTiles();
+        SurpriseMazafaka();
 	}
 
 	void InitTiles()
@@ -37,6 +38,21 @@ public class MapController : MonoBehaviour
 			}
 		}
 	}
+    
+    public void SurpriseMazafaka()
+    {
+        int[] points = new int[]
+        {
+            11*30+19,12*30+18,13*30+17,13*30+18,13*30+19,13*30+20,14*30+20,15*30+20,15*30+19, //2
+            15*30+15,16*30+15,16*30+14,16*30+16,17*30+15,                                     //x
+            18*30+12,19*30+11,20*30+10,20*30+11,20*30+12,20*30+13,21*30+13,22*30+13,22*30+12  //2
+        };
+        foreach (var point in points)
+        {
+            var tileRender = tilesPlace.GetChild(point).GetComponent<SpriteRenderer>();
+            tileRender.sprite = standartSprite;
+        }   
+    }
 
 	public void NextPack()
 	{
