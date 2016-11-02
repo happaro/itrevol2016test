@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InfoWindow : Window 
+public class WindowInfo : Window 
 {
 	public Button okButton;
 
@@ -10,11 +10,5 @@ public class InfoWindow : Window
 		okButton.myAction = () => {
 			base.CloseWindow();
 		};
-	}
-	
-
-	void Update () 
-	{
-	
 	}
 }

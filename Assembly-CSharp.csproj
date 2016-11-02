@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
-     <Compile Include="Assets\Scripts\InfoWindow.cs" />
+     <Compile Include="Assets\Scripts\BuyButton.cs" />
      <Compile Include="Assets\Scripts\KeyHandler.cs" />
      <Compile Include="Assets\Scripts\MapController.cs" />
      <Compile Include="Assets\Scripts\SaveManager.cs" />
@@ -55,6 +56,8 @@
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\TouchHandler.cs" />
      <Compile Include="Assets\Scripts\Window.cs" />
+     <Compile Include="Assets\Scripts\WindowInfo.cs" />
+     <Compile Include="Assets\Scripts\WindowShop.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
