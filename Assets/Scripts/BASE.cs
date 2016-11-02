@@ -27,6 +27,11 @@ public class BASE : MonoBehaviour
 		return properties[(int)type].buildName;
 	}
 
+	public Sprite GetBuildingSprite(BuildingType type)
+	{
+		return properties[(int)type].sprite;
+	}
+
 }
 
 [Serializable]
@@ -34,6 +39,7 @@ public class BuildProperty
 {
 	public int[] prices = new int[3];
 	public string buildName;
+	public Sprite sprite;
 }
 
 	

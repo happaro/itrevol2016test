@@ -7,9 +7,10 @@ public class BuyButton : Button
 
 	protected override void Action ()
 	{
-		if (SaveManager.coinsCount > BASE.Instance.GetBuildPrice (type, 1)) 
+		if (SaveManager.coinsCount >= BASE.Instance.GetBuildPrice (type, 0)) 
 		{
 			WindowManager.Instance.GetWindow<GUI> ().Open ();
+			WindowManager.Instance.GetWindow<WindowShop> ().Close ();
 			BuyBuild ();
 		}
 		else 
@@ -25,6 +26,7 @@ public class BuyButton : Button
 
 	void BuyBuild()
 	{
-		Debug.LogWarning ("PLACE FOR BUY");
+		GameObject.FindObjectOfType<MapController> ().CreateBuilding (type);
+		//WindowManager.Instance.GetWindow<GUI>
 	}
 }
