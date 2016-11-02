@@ -7,8 +7,10 @@ public class WindowShop : Window
 
 	void Start () 
 	{
-		closeButton.myAction = () => {
-			base.CloseWindow();
+		closeButton.myAction = () => 
+		{
+			base.Close();
+			WindowManager.Instance.GetWindow<GUI>().Open();
 		};
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Timers;
+using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -20,10 +20,13 @@ public class MapController : MonoBehaviour
 
 	public Tile[,] tiles = new Tile[30, 30];
 
+	public List<Building> buildings = new List<Building> ();
 
+	public BASE basePrefab;
 
 	void Start () 
 	{
+		Instantiate (basePrefab);
 		InitTiles();
 	}
 
@@ -36,9 +39,6 @@ public class MapController : MonoBehaviour
 				go.transform.parent = tilesPlace;
 			}
 	}
-
-//	void 
-
 
 
 

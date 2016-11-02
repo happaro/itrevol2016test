@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BuildButton : Button
+public class BuyButton : Button
 {
-	public enum BuildingType
-	{
-		HandBuilding,
-		FootBuilding,
-		Shop
-	}
+	public BuildingType type;
 
-	protected virtual void Action()
+	protected override void Action ()
 	{
-		BuyBuild ();
+		if (SaveManager.coinsCount > BASE.Instance.GetBuildPrice (type, 1)) 
+		{
+			WindowManager.Instance.GetWindow<GUI> ().Open ();
+			BuyBuild ();
+		}
+		else 
+		{
+			WindowManager.Instance.GetWindow<WindowShop> ().Close ();
+			WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Облом", "У вас недостаточно средств \nдля приобритения \n " + BASE.Instance.GetBuildName(type), () => 
+				{
+					WindowManager.Instance.GetWindow<WindowInfo>().Close();
+					WindowManager.Instance.GetWindow<WindowShop>().Open();
+				});
+		}
 	}
 
 	void BuyBuild()
 	{
-		
-	}
-
-	void UpgradeBuild()
-	{
-		
+		Debug.LogWarning ("PLACE FOR BUY");
 	}
 }

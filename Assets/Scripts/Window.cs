@@ -3,9 +3,14 @@ using System.Collections;
 
 public class Window : MonoBehaviour 
 {
-	protected virtual void CloseWindow()
+	public virtual void Close()
 	{
 		gameObject.SetActive (false);
+	}
+
+	public virtual void Open()
+	{
+		gameObject.SetActive (true);
 	}
 
 }

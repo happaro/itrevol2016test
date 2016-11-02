@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum BuildingType {HandBuilding, FootBuilding, Shop}
+public enum BuildingType {HandBuilding = 0, FootBuilding, Shop}
 
 public class Building : MonoBehaviour 
 {

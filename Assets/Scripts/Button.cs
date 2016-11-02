@@ -4,6 +4,7 @@ using System.Collections;
 public class Button : MonoBehaviour 
 {
 	private bool isPressed;
+
 	public delegate void MyAction();
 	public MyAction myAction;
 
@@ -38,8 +39,11 @@ public class Button : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		if (isPressed)
+		if (isPressed) 
+		{
+			UpAction ();
 			Action ();
+		}
 	}
 
 	protected virtual void Action()

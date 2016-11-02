@@ -1,9 +1,57 @@
 fileFormatVersion: 2
 guid: ca2a140fd2b084bb68b48f72749edf08
-timeCreated: 1478074888
+timeCreated: 1478109611
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Button_pack_002_0
+    21300002: Button_pack_002_1
+    21300004: Button_pack_002_2
+    21300006: Button_pack_002_3
+    21300008: Button_pack_002_4
+    21300010: Button_pack_002_5
+    21300012: Button_pack_002_6
+    21300014: Button_pack_002_7
+    21300016: Button_pack_002_8
+    21300018: Button_pack_002_9
+    21300020: Button_pack_002_10
+    21300022: Button_pack_002_11
+    21300024: Button_pack_002_12
+    21300026: Button_pack_002_13
+    21300028: Button_pack_002_14
+    21300030: Button_pack_002_15
+    21300032: Button_pack_002_16
+    21300034: Button_pack_002_17
+    21300036: Button_pack_002_18
+    21300038: Button_pack_002_19
+    21300040: Button_pack_002_20
+    21300042: Button_pack_002_21
+    21300044: Button_pack_002_22
+    21300046: Button_pack_002_23
+    21300048: Button_pack_002_24
+    21300050: Button_pack_002_25
+    21300052: Button_pack_002_26
+    21300054: Button_pack_002_27
+    21300056: Button_pack_002_28
+    21300058: Button_pack_002_29
+    21300060: Button_pack_002_30
+    21300062: Button_pack_002_31
+    21300064: Button_pack_002_32
+    21300066: Button_pack_002_33
+    21300068: Button_pack_002_34
+    21300070: Button_pack_002_35
+    21300072: Button_pack_002_36
+    21300074: Button_pack_002_37
+    21300076: Button_pack_002_38
+    21300078: Button_pack_002_39
+    21300080: Button_pack_002_40
+    21300082: Button_pack_002_41
+    21300084: Button_pack_002_42
+    21300086: Button_pack_002_43
+    21300088: Button_pack_002_44
+    21300090: Button_pack_002_45
+    21300092: Button_pack_002_46
+    21300094: Button_pack_002_47
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +74,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +86,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +99,631 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Button_pack_002_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1545
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1545
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_2
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1545
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_3
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1545
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_4
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1407
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_5
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1407
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_6
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1407
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_7
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1407
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_8
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1269
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_9
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1269
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_10
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1269
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_11
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1269
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_12
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1131
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_13
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1131
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_14
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1131
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_15
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1131
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_16
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 993
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_17
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 993
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_18
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 993
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_19
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 993
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_20
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 855
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_21
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 855
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_22
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 855
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_23
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 855
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_24
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 717
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_25
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 717
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_26
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 717
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_27
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 717
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_28
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 579
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_29
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 579
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_30
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 579
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_31
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 579
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_32
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 441
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_33
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 441
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_34
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 441
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_35
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 441
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_36
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 303
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_37
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 303
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_38
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 303
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_39
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 303
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_40
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 165
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_41
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 165
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_42
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 165
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_43
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 165
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_44
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 27
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_45
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 27
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_46
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 27
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_pack_002_47
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 27
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
