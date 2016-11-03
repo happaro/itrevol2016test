@@ -12,7 +12,7 @@ public class TouchHandler : MonoBehaviour
 			if(hit.collider != null && hit.transform.tag == "Tile")
 			{
                 Point point = CoordinateConvertor.IsoToSimple(hit.point);
-                map.buildingCreationWindow.transform.position = CoordinateConvertor.SimpleToIso(point);
+                map.buildingCreationWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
 			}
 		}
 	}
