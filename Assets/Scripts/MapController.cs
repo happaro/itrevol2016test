@@ -30,6 +30,7 @@ public class MapController : MonoBehaviour
         go.transform.parent = buildingCreationWindow.transform;
         buildingCreationWindow.SetSelectedBuilding(building);
         buildingCreationWindow.SetPosition(buildingCreationWindow.transform.position);
+		building.InitializeBuilding (type);
 	}
 
     public void FinishBuilding()

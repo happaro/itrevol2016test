@@ -10,18 +10,15 @@ public class MapEditor : MonoBehaviour
 	public BASE _base;
 	public MapController map;
 	public Sprite[] tilesTypes;
-
-	//public TilePack[] packs;
 	public Sprite[] tilesSprites;
-
-	//public TilePack currentPack {get{return packs[currentBuildPack];}}
-	//int currentBuildPack = 0;
 
 	public int currentSpriteNum = 0;
 	public bool allowBuild;
 
 	public Vector3 startPosition;
 	public Vector3 startCamPosition;
+	public Sprite currentTileSprite;
+
 
 	public void Update()
 	{
@@ -30,8 +27,8 @@ public class MapEditor : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 			if(hit.collider != null && hit.transform.tag == "Tile")
 			{
-				hit.transform.GetComponent<SpriteRenderer> ().sprite = tilesSprites [currentSpriteNum];
-				hit.transform.GetComponent<Tile> ().allowBuild = allowBuild;
+				hit.transform.GetComponent<SpriteRenderer> ().sprite = currentTileSprite;
+				//hit.transform.GetComponent<Tile> ().allowBuild = allowBuild;
 			}
 		}
 
@@ -78,12 +75,16 @@ public class MapEditorEditor : Editor
 		var map = target as MapEditor;
 		if (map.tilesSprites.Length > 0 && map.tilesSprites[map.currentSpriteNum] != null)
 		{
+			
 			GUILayout.Label("Current tile");
+if (map.currentTileSprite != null)
+map.currentTileSprite = (Sprite)EditorGUILayout.ObjectField (map.currentTileSprite, typeof(Sprite), false);
+
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("<-"))
 				map.NextPack();
-			if (map.tilesSprites[map.currentSpriteNum] != null)
-				GUILayout.Label(map.tilesSprites[map.currentSpriteNum].texture);
+			if (map.currentTileSprite != null)
+				GUILayout.Label(map.currentTileSprite.texture);
 			if (GUILayout.Button("->"))
 				map.PrevPack();
 			GUILayout.EndHorizontal();

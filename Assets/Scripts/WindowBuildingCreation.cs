@@ -24,7 +24,8 @@ public class WindowBuildingCreation : Window
     {
         transform.position = new Vector3(position.x,position.y,position.z-0.1f);
         okButton.gameObject.SetActive(CanBuild());
-        if(CanBuild())
+
+		if(CanBuild())
         {
             selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(150f / 255f, 255f / 255f, 100f / 255f);            
         }
@@ -54,11 +55,14 @@ public class WindowBuildingCreation : Window
             selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(1,1,1);
             GameObject.FindObjectOfType<MapController>().FinishBuilding();
             SetSelectedBuilding(null);
+			WindowManager.Instance.GetWindow<GUI>().Open();
         };
+
         cancelButton.myAction = () =>
         {
             GameObject.FindObjectOfType<MapController>().CancelBuilding();
             SetSelectedBuilding(null);
+			WindowManager.Instance.GetWindow<GUI>().Open();
         };
     }
 }

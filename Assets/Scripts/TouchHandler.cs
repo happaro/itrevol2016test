@@ -6,7 +6,7 @@ public class TouchHandler : MonoBehaviour
 	public MapController map;
 	void Update () 
 	{
-        if (map.buildingCreationWindow != null && Input.GetMouseButton(0))
+		if (map.buildingCreationWindow != null && Input.GetMouseButton(0) && map.buildingCreationWindow.selectedBuilding != null)
 		{
 			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 			if(hit.collider != null && hit.transform.tag == "Tile")

@@ -11,7 +11,7 @@ public class BuyButton : Button
 	{
 		if (SaveManager.coinsCount >= BASE.Instance.GetBuildPrice (type, 0)) 
 		{
-			WindowManager.Instance.GetWindow<GUI> ().Open ();
+			//WindowManager.Instance.GetWindow<GUI> ().Close ();
 			WindowManager.Instance.GetWindow<WindowShop> ().Close ();
 			BuyBuild ();
 		}
