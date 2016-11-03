@@ -60,7 +60,7 @@ public class MapController : MonoBehaviour
 		ItitMap ();
 		WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Tutorial", "Hello, mutherfucker\n For now, build your\nfirst fucking building!", () =>
 			{
-				WindowManager.Instance.GetWindow<WindowInfo>().Close();
+				WindowManager.Instance.GetWindow<WindowInfo>().Close(true);
 				//WindowManager.Instance.GetWindow<GUI>().Open();
 				CreateFirstBuilding();
 			});
