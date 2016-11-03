@@ -13,6 +13,8 @@ public class TouchHandler : MonoBehaviour
 	public Camera GUICam;
 
 	public bool allowScroll;
+	public bool moving = false;
+
 	void Start()
 	{
 		upgradingWindow = WindowManager.Instance.GetWindow<WindowBuildingUpdating> ();
@@ -27,12 +29,20 @@ public class TouchHandler : MonoBehaviour
 		{
 			startMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
 			startCameraPosition = villageCam.transform.position;
+			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+			if (hit.collider != null && creatingWindow.selectedBuilding != null && hit.collider.gameObject == creatingWindow.selectedBuilding.gameObject)
+				moving = true;
 			scrolling = false;
 		}
 			
 
         if (Input.GetMouseButton(0))
         {
+			if (moving) 
+			{
+				BuildingTapCheck ();
+				return;
+			}
 			if (!allowScroll)
 				return;
 			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
@@ -42,33 +52,41 @@ public class TouchHandler : MonoBehaviour
 				scrolling = true;
         }
 
-
 		if (Input.GetMouseButtonUp (0) && !scrolling) 
 		{
-			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-			if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
-			{
-				//якщо відкрито вікно оновлення - закриваєм його
-				if (upgradingWindow.selectedBuilding)
-					upgradingWindow.SetSelectedBuilding(null);
-				if (creatingWindow.selectedBuilding)
-				{
-					Point point = CoordinateConvertor.IsoToSimple(hit.point);
-					creatingWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
-				}
-			}
-			// якщо начого не строїмо
-			if(!creatingWindow.selectedBuilding)
-			{
-				// і натискаєм на побудований будинок
-				if (hit.collider != null && hit.transform.tag == "Building")
-				{
-					var building = hit.transform.GetComponent<Building>();
-					upgradingWindow.SetSelectedBuilding (building);
-					Point point = CoordinateConvertor.IsoToSimple(building.transform.position);
-					upgradingWindow.SetPosition (CoordinateConvertor.SimpleToIso (point));
-				}
-			}	
+			if (!moving) 
+				BuildingTapCheck ();
+			moving = false;
 		}
+
+
     }
+	void BuildingTapCheck()
+	{
+		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+		if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
+		{
+			//якщо відкрито вікно оновлення - закриваєм його
+			if (upgradingWindow.selectedBuilding)
+				upgradingWindow.SetSelectedBuilding(null);
+			if (creatingWindow.selectedBuilding)
+			{
+				Point point = CoordinateConvertor.IsoToSimple(hit.point);
+				creatingWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
+			}
+		}
+		// якщо начого не строїмо
+		if(!creatingWindow.selectedBuilding)
+		{
+			// і натискаєм на побудований будинок
+			if (hit.collider != null && hit.transform.tag == "Building")
+			{
+				var building = hit.transform.GetComponent<Building>();
+				upgradingWindow.SetSelectedBuilding (building);
+				Point point = CoordinateConvertor.IsoToSimple(building.transform.position);
+				upgradingWindow.SetPosition (CoordinateConvertor.SimpleToIso (point));
+			}
+		}	
+	}
+
 }

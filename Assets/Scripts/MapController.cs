@@ -54,8 +54,6 @@ public class MapController : MonoBehaviour
 		var dt1 = DateTime.Now;
 		int random = UnityEngine.Random.Range (0, mapPatterns.Length);
 		var go = Instantiate(mapPatterns[random], mapPatterns[random].transform.position, mapPatterns[random].transform.rotation) as GameObject;
-		Debug.LogWarning ((DateTime.Now - dt1).Milliseconds);
-
 	}
 
     void InitTiles()
@@ -66,9 +64,7 @@ public class MapController : MonoBehaviour
 			{
                 var go = Instantiate(tilePrefab, CoordinateConvertor.SimpleToIso(new Point(i,j)), Quaternion.identity) as GameObject;				
 				go.transform.parent = tilesPlace;
-				//tiles [i, j] = go.GetComponent<Tile> ();
 			}
-		Debug.LogWarning ((DateTime.Now - dt1).Milliseconds);
 	}
 }
 
