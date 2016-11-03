@@ -13,7 +13,7 @@ public class MapController : MonoBehaviour
 
 	public TilePack[] packs;
 	public Transform tilesPlace;
-
+    public Transform buildingPlace;
 	public TilePack currentPack {get{return packs[currentBuildPack];}}
 	int currentBuildPack = 0;
 
@@ -23,14 +23,22 @@ public class MapController : MonoBehaviour
 
 	public BASE basePrefab;
 
-	public Building movingBuilding;
+    public WindowBuildingCreation buildingCreationWindow;
 
 	public void CreateBuilding(BuildingType type)
 	{
-        var go = Instantiate(buildingPrefab, CoordinateConvertor.SimpleToIso(new Point(15, 15)), Quaternion.identity) as GameObject;	
-		//buildings.Add (go.GetComponent<Building> ());
-		movingBuilding = go.GetComponent<Building> ();
+        buildingCreationWindow.transform.position = CoordinateConvertor.SimpleToIso(new Point(15, 15));
+        var go = Instantiate(buildingPrefab, CoordinateConvertor.SimpleToIso(new Point(15, 15)), Quaternion.identity) as GameObject;
+        Building building = go.GetComponent<Building>();
+        go.transform.parent = buildingCreationWindow.transform;
+        buildingCreationWindow.SetSelectedBuilding(building);
 	}
+
+    public void FinishBuilding()
+    {
+        buildingCreationWindow.selectedBuilding.transform.parent = buildingPlace;
+        buildings.Add(buildingCreationWindow.selectedBuilding);
+    }
 
 	void Start () 
 	{
