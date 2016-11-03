@@ -20,16 +20,44 @@ public class WindowBuildingCreation : Window
         }
     }
 
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = new Vector3(position.x,position.y,position.z-0.1f);
+        okButton.gameObject.SetActive(CanBuild());
+        if(CanBuild())
+        {
+            selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(150f / 255f, 255f / 255f, 100f / 255f);            
+        }
+        else
+        {
+            selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(255f / 255f, 165f / 255f, 165f / 255f);
+        }
+    }
+
+    public bool CanBuild()
+    {
+        foreach (var building in GameObject.FindObjectOfType<MapController>().buildings)
+        {
+            if(building.transform.position.x == transform.position.x && building.transform.position.y == transform.position.y)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void Start()
     {
         okButton.myAction = () =>
         {
-            //TODO: BuildngCreation
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
+            selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(1,1,1);
             GameObject.FindObjectOfType<MapController>().FinishBuilding();
             SetSelectedBuilding(null);
         };
         cancelButton.myAction = () =>
         {
+            GameObject.FindObjectOfType<MapController>().CancelBuilding();
             SetSelectedBuilding(null);
         };
     }
