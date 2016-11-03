@@ -7,12 +7,18 @@ public class WindowBuildingUpdating : Window
     public Button deleteButton;
     public Building selectedBuilding;
 
+	public TextMesh nameText, descriptionText;
+
+
     public void SetSelectedBuilding(Building building)
     {
         selectedBuilding = building;
         if (selectedBuilding != null)
         {
             updateButton.gameObject.SetActive(CanUpdate());
+
+			nameText.text = string.Format("{0}\n(Уровень {1})", BASE.Instance.GetBuildName (building.buildingType), building.buildLevel);
+			descriptionText.text = BASE.Instance.GetDescription (building.buildingType);
             base.Open();
         }
         else
@@ -23,7 +29,8 @@ public class WindowBuildingUpdating : Window
     
     public bool CanUpdate()
     {
-        // якщо нехватає бабла -> false
+		if (selectedBuilding.buildLevel > 2 || SaveManager.coinsCount < BASE.Instance.GetBuildPrice (selectedBuilding.buildingType, selectedBuilding.buildLevel))
+			return false;
         return true;
     }
 
@@ -36,13 +43,15 @@ public class WindowBuildingUpdating : Window
     {
         updateButton.myAction = () =>
         {
-            //TODO: Update
+			SaveManager.coinsCount -= BASE.Instance.GetBuildPrice (selectedBuilding.buildingType, selectedBuilding.buildLevel);
+			selectedBuilding.buildLevel++;
             SetSelectedBuilding(null);
         };
 
         deleteButton.myAction = () =>
         {
-            //TODO: Delete
+			GameObject.FindObjectOfType<MapController>().buildings.Remove(selectedBuilding);
+			Destroy(selectedBuilding.gameObject);
             SetSelectedBuilding(null);
         };
     }

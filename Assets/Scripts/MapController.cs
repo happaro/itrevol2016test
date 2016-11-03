@@ -1,27 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-
+using System;
 
 public class MapController : MonoBehaviour 
 {
 	public GameObject tilePrefab, buildingPrefab;
-	public Sprite standartSprite;
-
-	public TilePack[] packs;
 	public Transform tilesPlace;
     public Transform buildingPlace;
-
-
-	public Tile[,] tiles = new Tile[30, 30];
+	public GameObject[] mapPatterns;
+	//public Tile[,] tiles = new Tile[30, 30];
 
 	public List<Building> buildings = new List<Building> ();
 
 	public BASE basePrefab;
 
     public WindowBuildingCreation buildingCreationWindow;
-    public WindowBuildingUpdating buildingUpdatingWindow;
 
 	public void CreateBuilding(BuildingType type)
 	{
@@ -38,6 +32,9 @@ public class MapController : MonoBehaviour
     {
         buildingCreationWindow.selectedBuilding.transform.parent = buildingPlace;
         buildings.Add(buildingCreationWindow.selectedBuilding);
+		buildingCreationWindow.selectedBuilding.isBuilded = true;
+		SaveManager.coinsCount -= BASE.Instance.GetBuildPrice (buildingCreationWindow.selectedBuilding.buildingType, 0);
+
     }
 
     public void CancelBuilding()
@@ -48,18 +45,30 @@ public class MapController : MonoBehaviour
 	void Start () 
 	{
 		Instantiate (basePrefab);
-		InitTiles();
+		//InitTiles();
+		ItitMap ();
+	}
+
+	void ItitMap()
+	{
+		var dt1 = DateTime.Now;
+		int random = UnityEngine.Random.Range (0, mapPatterns.Length);
+		var go = Instantiate(mapPatterns[random], mapPatterns[random].transform.position, mapPatterns[random].transform.rotation) as GameObject;
+		Debug.LogWarning ((DateTime.Now - dt1).Milliseconds);
+
 	}
 
     void InitTiles()
 	{
+		var dt1 = DateTime.Now;
 		for (int i = 0; i < 30; i++)
 			for (int j = 0; j < 30; j++) 
 			{
                 var go = Instantiate(tilePrefab, CoordinateConvertor.SimpleToIso(new Point(i,j)), Quaternion.identity) as GameObject;				
 				go.transform.parent = tilesPlace;
-				tiles [i, j] = go.GetComponent<Tile> ();
+				//tiles [i, j] = go.GetComponent<Tile> ();
 			}
+		Debug.LogWarning ((DateTime.Now - dt1).Milliseconds);
 	}
 }
 

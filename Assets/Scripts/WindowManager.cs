@@ -5,7 +5,7 @@ public class WindowManager : MonoBehaviour
 {
 	public static WindowManager Instance;
 
-	void Start () 
+	void Awake () 
 	{
 		Instance = this;
 	}

@@ -43,6 +43,11 @@ public class BASE : MonoBehaviour
 	{
 		return properties[(int)type].sprite;
 	}
+
+	public string GetDescription(BuildingType type)
+	{
+		return properties[(int)type].description;
+	}
 }
 
 [Serializable]
@@ -52,6 +57,7 @@ public class BuildProperty
 	public int[] resourcePrices = new int[3];
 	public string buildName;
 	public string resourceName;
+	public string description;
 	public Sprite sprite;
 	public Sprite resourceSprite;
 }
@@ -69,7 +75,9 @@ public class BASEEditor : Editor
 			
 			GUILayout.Space (20);
 			GUILayout.Label (((BuildingType)i).ToString());
-			_base.properties [i].buildName = EditorGUILayout.TextField (_base.properties [i].buildName);
+			_base.properties [i].buildName = EditorGUILayout.TextField(_base.properties [i].buildName);
+
+			_base.properties [i].description = EditorGUILayout.TextArea(_base.properties [i].description);
 			_base.properties [i].prices[0] = EditorGUILayout.IntSlider ("Level 1 :", _base.properties [i].prices[0], 0, 10000);
 			_base.properties [i].prices[1] = EditorGUILayout.IntSlider ("Level 2 :", _base.properties [i].prices[1], 0, 10000);
 			_base.properties [i].prices[2] = EditorGUILayout.IntSlider ("Level 3 :", _base.properties [i].prices[2], 0, 10000);
