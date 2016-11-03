@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\KeyHandler.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\MapController.cs" />
+     <Compile Include="Assets\Scripts\MapEditor.cs" />
      <Compile Include="Assets\Scripts\SaveManager.cs" />
      <Compile Include="Assets\Scripts\Serializer.cs" />
      <Compile Include="Assets\Scripts\StandartButton.cs" />

@@ -2,9 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+
 
 public class MapController : MonoBehaviour 
 {
@@ -14,8 +12,7 @@ public class MapController : MonoBehaviour
 	public TilePack[] packs;
 	public Transform tilesPlace;
     public Transform buildingPlace;
-	public TilePack currentPack {get{return packs[currentBuildPack];}}
-	int currentBuildPack = 0;
+
 
 	public Tile[,] tiles = new Tile[30, 30];
 
@@ -54,24 +51,8 @@ public class MapController : MonoBehaviour
 			{
                 var go = Instantiate(tilePrefab, CoordinateConvertor.SimpleToIso(new Point(i,j)), Quaternion.identity) as GameObject;				
 				go.transform.parent = tilesPlace;
+				tiles [i, j] = go.GetComponent<Tile> ();
 			}
-	}
-
-
-
-	//-----EDITOR
-	public void NextPack()
-	{
-		if (currentBuildPack >= packs.Length - 1)
-			currentBuildPack = 0;
-		else currentBuildPack++;
-	}
-
-	public void PrevPack()
-	{
-		if (currentBuildPack == 0)
-			currentBuildPack = packs.Length - 1;
-		else currentBuildPack--;
 	}
 }
 
@@ -89,27 +70,3 @@ public class TilePack
 	public TileType type;
 	public Sprite sprite;
 }
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(MapController))]
-public class MapContorllerEditor : Editor
-{
-	public override void OnInspectorGUI ()
-	{
-		base.OnInspectorGUI ();
-		var map = target as MapController;
-		if (map.currentPack.sprite != null)
-		{
-			GUILayout.Label("Current tile");
-			GUILayout.BeginHorizontal();
-			if (GUILayout.Button("<-"))
-				map.NextPack();
-			GUILayout.Label(map.currentPack.sprite.texture);
-			if (GUILayout.Button("->"))
-				map.PrevPack();
-			GUILayout.EndHorizontal();
-		}
-
-	}
-}
-#endif

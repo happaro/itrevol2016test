@@ -3,14 +3,7 @@ using System.Collections;
 
 public class TouchHandler : MonoBehaviour 
 {
-	
 	public MapController map;
-
-	void Start()
-	{
-		
-	}
-
 	void Update () 
 	{
         if (map.buildingCreationWindow != null && Input.GetMouseButton(0))
@@ -23,6 +16,4 @@ public class TouchHandler : MonoBehaviour
 			}
 		}
 	}
-
-
 }

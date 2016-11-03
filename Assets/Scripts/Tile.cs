@@ -8,11 +8,12 @@ public class Tile : MonoBehaviour
 	public TileType type;
 	public int level;
 	public SpriteRenderer mySpriteRenderer;
+	public bool allowBuild;
 
 	public void ChangeTileType()
 	{
-		type = GameObject.FindObjectOfType<MapController>().currentPack.type;
-		this.GetComponent<SpriteRenderer>().sprite = GameObject.FindObjectOfType<MapController>().currentPack.sprite;
+		//type = GameObject.FindObjectOfType<MapController>().currentPack.type;
+		//this.GetComponent<SpriteRenderer>().sprite = GameObject.FindObjectOfType<MapController>().currentPack.sprite;
 	}
 
 	void Start () 

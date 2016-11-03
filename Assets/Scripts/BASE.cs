@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 #if UNITY_EDITOR
@@ -11,6 +12,7 @@ public class BASE : MonoBehaviour
 	public static BASE Instance;
 
 	public BuildProperty[] properties = new BuildProperty[Enum.GetValues(typeof(BuildingType)).Length];
+	public List<int[,]> mapPatterns = new List<int[,]>();
 
 	public void Start()
 	{
