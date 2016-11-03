@@ -5,7 +5,7 @@ using System;
 
 public class MapController : MonoBehaviour 
 {
-	public GameObject tilePrefab, buildingPrefab;
+	public GameObject tilePrefab, buildingPrefab, mainBuildingPrefab;
 	public Transform tilesPlace;
     public Transform buildingPlace;
 	public GameObject[] mapPatterns;
@@ -28,6 +28,17 @@ public class MapController : MonoBehaviour
 		building.InitializeBuilding (type);
 	}
 
+	public void CreateFirstBuilding()
+	{
+		buildingCreationWindow.transform.position = CoordinateConvertor.SimpleToIso(new Point(15, 15));
+		var go = Instantiate(mainBuildingPrefab, CoordinateConvertor.SimpleToIso(new Point(15, 15)), Quaternion.identity) as GameObject;
+		Building building = go.GetComponent<Building>();
+		go.transform.parent = buildingCreationWindow.transform;
+		buildingCreationWindow.SetSelectedBuilding(building);
+		buildingCreationWindow.SetPosition(buildingCreationWindow.transform.position);
+		building.InitializeBuilding (BuildingType.FootBuilding);
+	}
+
     public void FinishBuilding()
     {
         buildingCreationWindow.selectedBuilding.transform.parent = buildingPlace;
@@ -47,6 +58,13 @@ public class MapController : MonoBehaviour
 		Instantiate (basePrefab);
 		//InitTiles();
 		ItitMap ();
+		WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Tutorial", "Hello, mutherfucker\n For now, build your\nfirst fucking building!", () =>
+			{
+				WindowManager.Instance.GetWindow<WindowInfo>().Close();
+				//WindowManager.Instance.GetWindow<GUI>().Open();
+				CreateFirstBuilding();
+			});
+
 	}
 
 	void ItitMap()

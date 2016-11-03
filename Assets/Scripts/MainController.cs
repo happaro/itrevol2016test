@@ -20,7 +20,7 @@ public class MainController : MonoBehaviour
 	void Start()
 	{
 		inventory = new Inventory ();
-		inventory.productsCouns = new int[BASE.Instance.properties.Length];
+		inventory.productsCounts = new int[BASE.Instance.properties.Length];
 	}
 
 	void FixedUpdate () 
@@ -35,5 +35,6 @@ public class MainController : MonoBehaviour
 [System.Serializable]
 public class Inventory
 {
-	public int[] productsCouns;
+	public int mainProductCount;
+	public int[] productsCounts;
 }

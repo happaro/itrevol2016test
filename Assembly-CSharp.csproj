@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\BuyButton.cs" />
      <Compile Include="Assets\Scripts\CoordinateConvertor.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
+     <Compile Include="Assets\Scripts\HumanInputer.cs" />
      <Compile Include="Assets\Scripts\KeyHandler.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\MapController.cs" />

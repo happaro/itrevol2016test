@@ -60,6 +60,8 @@ public class BuildProperty
 	public string description;
 	public Sprite sprite;
 	public Sprite resourceSprite;
+	public bool mainResource = true;
+	public BuildingType inputType1, inputType2;
 }
 
 	
@@ -83,6 +85,13 @@ public class BASEEditor : Editor
 			_base.properties [i].prices[2] = EditorGUILayout.IntSlider ("Level 3 :", _base.properties [i].prices[2], 0, 10000);
 			GUILayout.Label ("Resource price:");
 			_base.properties [i].resourcePrice = EditorGUILayout.IntSlider ("Level:", _base.properties [i].resourcePrice, 0, 300);
+			_base.properties [i].mainResource = EditorGUILayout.Toggle ("Main resource", _base.properties [i].mainResource);
+			if (!_base.properties [i].mainResource) 
+			{
+				_base.properties [i].inputType1 = (BuildingType)EditorGUILayout.EnumPopup(_base.properties [i].inputType1);
+				_base.properties [i].inputType2 = (BuildingType)EditorGUILayout.EnumPopup(_base.properties [i].inputType2);
+			}
+
 
 			GUILayout.BeginHorizontal ();
 

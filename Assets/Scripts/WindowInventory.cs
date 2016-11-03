@@ -32,14 +32,27 @@ public class WindowInventory : Window
 			Destroy (button.gameObject);
 		buttons.Clear ();
 
-		for (int i = 0; i < MainController.ins.inventory.productsCouns.Length; i++) 
+		int i = 0;
+		if (MainController.ins.inventory.mainProductCount > 0) 
 		{
-			if (MainController.ins.inventory.productsCouns [i] > 0) 
+			var go = Instantiate(productPrefab, this.transform.position + productPrefab.transform.position, productPrefab.transform.rotation) as GameObject;
+			var button = go.GetComponent<BuyButton> ();
+			button.price.text = "0$";
+			button.name.text = MainController.ins.inventory.mainProductCount.ToString ();
+			button.transform.parent = transform;
+			buttons.Add (button);
+			i = 1;
+		}
+			
+		for (; i < MainController.ins.inventory.productsCounts.Length; i++) 
+		{
+			if (MainController.ins.inventory.productsCounts [i] > 0) 
 			{
 				var go = Instantiate(productPrefab, this.transform.position + productPrefab.transform.position + new Vector3((i % 3) * step, (i / 3) * -step), productPrefab.transform.rotation) as GameObject;
 				var button = go.GetComponent<BuyButton> ();
 				button.type = (BuildingType)i;
 				button.price.text = BASE.Instance.GetResourcePrice (button.type).ToString() + "$";
+				button.name.text = MainController.ins.inventory.mainProductCount.ToString ();
 				button.icon.sprite = BASE.Instance.GetBuildingResource (button.type);
 				button.transform.parent = transform;
 				buttons.Add (button);
