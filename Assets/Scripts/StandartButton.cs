@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StandartButton : Button
 {
-	public enum ButtonAction {StartGame, GoToMainMenu, GoShop}
+	public enum ButtonAction {StartGame, GoToMainMenu, GoShop, Inventory}
 	public ButtonAction myActionType;
 
 	protected override void Action ()
@@ -23,8 +23,11 @@ public class StandartButton : Button
 			Application.LoadLevel ("Menu");
 			break;
 		case ButtonAction.GoShop:
-			//Debug.LogWarning (WindowManager.Instance.name);
 			WindowManager.Instance.GetWindow<WindowShop> ().Open ();
+			WindowManager.Instance.GetWindow<GUI> ().Close ();
+			break;
+		case ButtonAction.Inventory:
+			WindowManager.Instance.GetWindow<WindowInventory> ().Open ();
 			WindowManager.Instance.GetWindow<GUI> ().Close ();
 			break;
 		default:

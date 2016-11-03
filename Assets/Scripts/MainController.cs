@@ -8,12 +8,19 @@ public class MainController : MonoBehaviour
 	float timer = 300;
 
 	public static MainController ins;
+	public Inventory inventory;
+
+	void Awake()
+	{
+		MainController.ins = this;
+		Application.targetFrameRate = 60;
+		SaveManager.coinsCount = 5000;
+	}
 
 	void Start()
 	{
-		Application.targetFrameRate = 60;
-		MainController.ins = this;
-		SaveManager.coinsCount = 5000;
+		inventory = new Inventory ();
+		inventory.productsCouns = new int[BASE.Instance.properties.Length];
 	}
 
 	void FixedUpdate () 
@@ -23,4 +30,10 @@ public class MainController : MonoBehaviour
 		moneyText.text = SaveManager.coinsCount.ToString ();
 		expText.text = SaveManager.currentScore.ToString ();
 	}
+}
+
+[System.Serializable]
+public class Inventory
+{
+	public int[] productsCouns;
 }

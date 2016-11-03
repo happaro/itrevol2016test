@@ -6,6 +6,7 @@ public class BuyButton : Button
 	public BuildingType type;
 	public TextMesh name;
 	public TextMesh price;
+	public SpriteRenderer icon;
 
 	protected override void Action ()
 	{

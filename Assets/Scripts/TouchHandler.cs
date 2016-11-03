@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public class TouchHandler : MonoBehaviour
 {
@@ -47,7 +48,9 @@ public class TouchHandler : MonoBehaviour
 				return;
 			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 newPosition = startMousePosition - newMousePosition;
-			villageCam.transform.position = startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0);
+			HOTween.Kill (villageCam.gameObject);
+			HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
+			//villageCam.transform.position = startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0);
 			if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
 				scrolling = true;
         }

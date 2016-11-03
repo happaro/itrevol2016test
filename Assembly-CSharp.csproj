@@ -69,14 +69,20 @@
      <Compile Include="Assets\Scripts\Window.cs" />
      <Compile Include="Assets\Scripts\WindowBuildingCreation.cs" />
      <Compile Include="Assets\Scripts\WindowBuildingUpdating.cs" />
+     <Compile Include="Assets\Scripts\WindowDialog.cs" />
      <Compile Include="Assets\Scripts\WindowInfo.cs" />
+     <Compile Include="Assets\Scripts\WindowInventory.cs" />
      <Compile Include="Assets\Scripts\WindowManager.cs" />
      <Compile Include="Assets\Scripts\WindowShop.cs" />
+     <None Include="Assets\HOTween\HOTween_License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="HOTween">
+ <HintPath>/Users/user/Projects/itrevol2016test/Assets/HOTween/HOTween.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

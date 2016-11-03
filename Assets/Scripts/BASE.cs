@@ -14,7 +14,7 @@ public class BASE : MonoBehaviour
 	public BuildProperty[] properties = new BuildProperty[Enum.GetValues(typeof(BuildingType)).Length];
 	public List<int[,]> mapPatterns = new List<int[,]>();
 
-	public void Start()
+	public void Awake()
 	{
 		Instance = this;
 	}
@@ -24,9 +24,9 @@ public class BASE : MonoBehaviour
 		return properties[(int)type].prices[level];
 	}
 
-	public int GetResourcePrice(BuildingType type, int level)
+	public int GetResourcePrice(BuildingType type)
 	{
-		return properties[(int)type].resourcePrices[level];
+		return properties[(int)type].resourcePrice;
 	}
 
 	public string GetBuildName(BuildingType type)
@@ -41,7 +41,7 @@ public class BASE : MonoBehaviour
 
 	public Sprite GetBuildingResource(BuildingType type)
 	{
-		return properties[(int)type].sprite;
+		return properties[(int)type].resourceSprite;
 	}
 
 	public string GetDescription(BuildingType type)
@@ -54,7 +54,7 @@ public class BASE : MonoBehaviour
 public class BuildProperty
 {
 	public int[] prices = new int[3];
-	public int[] resourcePrices = new int[3];
+	public int resourcePrice;
 	public string buildName;
 	public string resourceName;
 	public string description;
@@ -81,6 +81,8 @@ public class BASEEditor : Editor
 			_base.properties [i].prices[0] = EditorGUILayout.IntSlider ("Level 1 :", _base.properties [i].prices[0], 0, 10000);
 			_base.properties [i].prices[1] = EditorGUILayout.IntSlider ("Level 2 :", _base.properties [i].prices[1], 0, 10000);
 			_base.properties [i].prices[2] = EditorGUILayout.IntSlider ("Level 3 :", _base.properties [i].prices[2], 0, 10000);
+			GUILayout.Label ("Resource price:");
+			_base.properties [i].resourcePrice = EditorGUILayout.IntSlider ("Level:", _base.properties [i].resourcePrice, 0, 300);
 
 			GUILayout.BeginHorizontal ();
 
