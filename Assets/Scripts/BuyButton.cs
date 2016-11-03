@@ -4,6 +4,8 @@ using System.Collections;
 public class BuyButton : Button
 {
 	public BuildingType type;
+	public TextMesh name;
+	public TextMesh price;
 
 	protected override void Action ()
 	{

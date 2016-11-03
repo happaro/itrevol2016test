@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
      <Compile Include="Assets\Scripts\BuyButton.cs" />
+     <Compile Include="Assets\Scripts\CoordinateConvertor.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
      <Compile Include="Assets\Scripts\KeyHandler.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
