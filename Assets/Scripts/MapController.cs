@@ -8,7 +8,6 @@ using UnityEditor;
 
 public class MapController : MonoBehaviour 
 {
-	float xStep = 0.5f, yStep = 0.25f;
 	public GameObject tilePrefab, buildingPrefab;
 	public Sprite standartSprite;
 
@@ -28,7 +27,7 @@ public class MapController : MonoBehaviour
 
 	public void CreateBuilding(BuildingType type)
 	{
-		var go = Instantiate(buildingPrefab, new Vector3(15 * xStep - 15 * xStep, 15 * yStep + 15 * yStep, Mathf.Sqrt(15  *15 + 15 * 15)), Quaternion.identity) as GameObject;
+        var go = Instantiate(buildingPrefab, CoordinateConvertor.SimpleToIso(new Point(15, 15)), Quaternion.identity) as GameObject;	
 		//buildings.Add (go.GetComponent<Building> ());
 		movingBuilding = go.GetComponent<Building> ();
 	}
@@ -44,9 +43,7 @@ public class MapController : MonoBehaviour
 		for (int i = 0; i < 30; i++)
 			for (int j = 0; j < 30; j++) 
 			{
-				int xPos = (int)((j - i)  - (j * yStep + i * yStep));
-				int yPos = (int)((j+i) + (j * xStep - i * xStep));
-				var go = Instantiate(tilePrefab, new Vector3((j - i) * xStep, (j + i) * yStep, Mathf.Sqrt(xPos*xPos + yPos*yPos)), Quaternion.identity) as GameObject;
+                var go = Instantiate(tilePrefab, CoordinateConvertor.SimpleToIso(new Point(i,j)), Quaternion.identity) as GameObject;				
 				go.transform.parent = tilesPlace;
 			}
 	}
