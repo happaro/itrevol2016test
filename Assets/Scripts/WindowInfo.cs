@@ -9,16 +9,16 @@ public class WindowInfo : Window
 
 	public void Open(string title, string newText)
 	{
+        base.Open(false);
 		info.text = newText;
-		gameObject.SetActive (true);
-		okButton.myAction = () => {base.Close();};
+        okButton.myAction = () => { base.Close(true); };
 	}
 
 	public void Open(string titleText, string infoText, Button.MyAction closeActionPlus)
 	{
+        base.Open(false);
 		okButton.myAction = closeActionPlus;
 		title.text = titleText;
 		info.text = infoText;
-		gameObject.SetActive (true);
 	}
 }

@@ -11,7 +11,7 @@ public class WindowShop : Window
 	{
 		closeButton.myAction = () => 
 		{
-			base.Close();
+            base.Close(true);
 			WindowManager.Instance.GetWindow<GUI>().Open();
 		};
 		//UpdateItems ();
@@ -19,7 +19,7 @@ public class WindowShop : Window
 
 	public override void Open ()
 	{
-		base.Open ();
+		base.Open(false);
 		UpdateItems ();
 	}
 

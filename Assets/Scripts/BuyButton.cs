@@ -13,16 +13,16 @@ public class BuyButton : Button
 		if (SaveManager.coinsCount >= BASE.Instance.GetBuildPrice (type, 0)) 
 		{
 			//WindowManager.Instance.GetWindow<GUI> ().Close ();
-			WindowManager.Instance.GetWindow<WindowShop> ().Close ();
+            WindowManager.Instance.GetWindow<WindowShop>().Close(true);
 			BuyBuild ();
 		}
 		else 
 		{
-			WindowManager.Instance.GetWindow<WindowShop> ().Close ();
+            WindowManager.Instance.GetWindow<WindowShop>().Close(true);
 			WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Облом", "У вас недостаточно средств \nдля приобритения \n " + BASE.Instance.GetBuildName(type), () => 
 				{
-					WindowManager.Instance.GetWindow<WindowInfo>().Close();
-					WindowManager.Instance.GetWindow<WindowShop>().Open();
+					WindowManager.Instance.GetWindow<WindowInfo>().Close(true);
+					WindowManager.Instance.GetWindow<WindowShop>().Open(false);
 				});
 		}
 	}
