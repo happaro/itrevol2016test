@@ -15,22 +15,22 @@ public class WindowInventory : Window
 	{
 		closeButton.myAction = () => 
 		{
-			base.Close();
+            base.Close(true);
 			WindowManager.Instance.GetWindow<GUI>().Open();
 		};
 	}
 
-	public override void Open ()
+	public override void Open()
 	{
-		base.Open ();
-		UpdateInventory ();
+		base.Open(false);
+		UpdateInventory();
 	}
 
 	void UpdateInventory()
 	{
 		foreach (var button in buttons)
 			Destroy (button.gameObject);
-		buttons.Clear ();
+		buttons.Clear();
 
 		for (int i = 0; i < MainController.ins.inventory.productsCouns.Length; i++) 
 		{

@@ -13,7 +13,7 @@ public class TouchHandler : MonoBehaviour
 	public Camera villageCam;
 	public Camera GUICam;
 
-	public bool allowScroll;
+	public bool allowScroll = false;
 	public bool moving = false;
 
 	void Start()
@@ -44,6 +44,7 @@ public class TouchHandler : MonoBehaviour
 				BuildingTapCheck ();
 				return;
 			}
+            Debug.Log(allowScroll);
 			if (!allowScroll)
 				return;
 			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
