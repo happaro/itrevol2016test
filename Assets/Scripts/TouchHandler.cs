@@ -13,13 +13,13 @@ public class TouchHandler : MonoBehaviour
 
 	void Update () 
 	{
-		if (map.movingBuilding != null && Input.GetMouseButton(0))
+        if (map.buildingCreationWindow != null && Input.GetMouseButton(0))
 		{
 			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 			if(hit.collider != null && hit.transform.tag == "Tile")
 			{
                 Point point = CoordinateConvertor.IsoToSimple(hit.point);
-                map.movingBuilding.transform.position = CoordinateConvertor.SimpleToIso(point);
+                map.buildingCreationWindow.transform.position = CoordinateConvertor.SimpleToIso(point);
 			}
 		}
 	}
