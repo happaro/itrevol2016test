@@ -21,6 +21,7 @@ public class MapController : MonoBehaviour
 	public BASE basePrefab;
 
     public WindowBuildingCreation buildingCreationWindow;
+    public WindowBuildingUpdating buildingUpdatingWindow;
 
 	public void CreateBuilding(BuildingType type)
 	{
