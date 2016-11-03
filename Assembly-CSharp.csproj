@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\TouchHandler.cs" />
      <Compile Include="Assets\Scripts\Window.cs" />
+     <Compile Include="Assets\Scripts\WindowBuildingCreation.cs" />
      <Compile Include="Assets\Scripts\WindowInfo.cs" />
      <Compile Include="Assets\Scripts\WindowManager.cs" />
      <Compile Include="Assets\Scripts\WindowShop.cs" />
