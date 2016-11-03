@@ -14,8 +14,8 @@ public static class CoordinateConvertor
     {
         int i = input.x;
         int j = input.y;
-        int xPos = (int)((j - i) - (j * 0.25 + i * 0.25));
-        int yPos = (int)((j + i) + (j * 0.5 - i * 0.5));
+        int xPos = (int)((j - i) - (j * 1 + i * 0.5));
+        int yPos = (int)((j + i) + (j * 1 - i * 0.5));
         return new Vector3((j - i) * 0.5f, (j + i) * 0.25f, Mathf.Sqrt(xPos * xPos + yPos * yPos));
     }
 }
