@@ -23,6 +23,7 @@ public class WindowProductCreation : Window
         {
             base.Close(true);
         };
+
         okButton.myAction = () =>
         {
             if (isMainResource)
@@ -40,6 +41,7 @@ public class WindowProductCreation : Window
             }
             base.Close(true);
         };
+
         plusButton.myAction = () =>
         {
             if (isMainResource)
@@ -95,6 +97,8 @@ public class WindowProductCreation : Window
 				inputTypecount2 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2]);
 		}            
 		minusButton.SetActive (inputTypecount1 > 0);
+
+		okButton.SetActive (inputTypecount1 > 0);
 	}
 
     public void Open(Building b)
@@ -108,14 +112,14 @@ public class WindowProductCreation : Window
         if (isMainResource)
         {
             resourseSprite2.transform.parent.transform.parent.gameObject.SetActive(false);
-            if(inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.mainProductCount)
+            /*if(inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.mainProductCount)
             {
                 okButton.SetActive(false);
             }
             else
             { 
                 okButton.SetActive(true); 
-            }
+            }*/
         }
         else
         {
@@ -124,7 +128,7 @@ public class WindowProductCreation : Window
             inputType2 = BASE.Instance.GetInputType2(building.buildingType);
             resourseSprite1.sprite = BASE.Instance.GetBuildingResource(inputType1);
             resourseSprite2.sprite = BASE.Instance.GetBuildingResource(inputType2);
-            if (inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] ||
+            /*if (inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] ||
                     inputTypecount2 > GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2])
             {
                 okButton.SetActive(false);
@@ -132,7 +136,7 @@ public class WindowProductCreation : Window
             else
             {
                 okButton.SetActive(true);
-            }
+            }*/
         }
         
 

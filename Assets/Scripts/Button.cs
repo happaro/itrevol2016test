@@ -20,7 +20,7 @@ public class Button : MonoBehaviour
 	}
 
 
-	float timer = 0, delay = 0.2f;
+	float timer = 0, delay = 0.1f;
 	void OnMouseOver()
 	{
 		if (isPressed && pushingAction && isActive) 
@@ -48,6 +48,7 @@ public class Button : MonoBehaviour
 
 	void UpAction()
 	{
+		isPressed = false;
 		transform.localScale = startScale;
 	}
 
