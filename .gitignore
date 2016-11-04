@@ -26,3 +26,5 @@ sysinfo.txt
 Temp/UnityLockfile
 ProjectSettings/EditorBuildSettings.asset
 ProjectSettings/ProjectVersion.txt
+Assembly-CSharp.csproj
+ProjectSettings/ProjectSettings.asset
