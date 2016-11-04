@@ -9,8 +9,6 @@ Project("{109975B1-22AF-5AE8-7C5C-EFD29B0E10F0}") = "itrevol2016test", "Assembly
 EndProject
 Project("{109975B1-22AF-5AE8-7C5C-EFD29B0E10F0}") = "itrevol2016test", "Assembly-CSharp-Editor.csproj", "{1D30E425-25B3-3763-6FCF-9A45D9C8E1C2}"
 EndProject
-Project("{109975B1-22AF-5AE8-7C5C-EFD29B0E10F0}") = "itrevol2016test", "Assembly-UnityScript-Editor-firstpass.unityproj", "{F49C2720-0716-7B26-92D0-B1323FA12A63}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +31,6 @@ Global
 		{1D30E425-25B3-3763-6FCF-9A45D9C8E1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D30E425-25B3-3763-6FCF-9A45D9C8E1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D30E425-25B3-3763-6FCF-9A45D9C8E1C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F49C2720-0716-7B26-92D0-B1323FA12A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F49C2720-0716-7B26-92D0-B1323FA12A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F49C2720-0716-7B26-92D0-B1323FA12A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F49C2720-0716-7B26-92D0-B1323FA12A63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

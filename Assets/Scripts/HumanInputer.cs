@@ -5,9 +5,13 @@ public class HumanInputer : Building
 {
 	public override void DoTasks ()
 	{
+        resourceObject.gameObject.SetActive(true);
+        float xScale = timer / speed * 1.4f;
+        doneIcon.transform.localScale = new Vector3(xScale, doneIcon.transform.localScale.y, doneIcon.transform.localScale.z);
+
 		base.timer += Time.deltaTime;
 		if (timer > speed) 
-		{
+		{            
 			doneTasks++;
 			timer = 0;
 			ProductInputer.ins.InputProduct (BuildingType.FootBuilding, true);
@@ -17,7 +21,6 @@ public class HumanInputer : Building
 
 	public override void InitializeBuilding (BuildingType type)
 	{
-		//base.InitializeBuilding (type);
 	}
 
 	public override void CollectResources ()
