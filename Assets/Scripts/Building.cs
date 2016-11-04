@@ -41,7 +41,6 @@ public class Building : MonoBehaviour
 		buildingType = type;
 		var props = BASE.Instance.properties [(int)buildingType];
 		this.GetComponent<SpriteRenderer> ().sprite = props.sprite;
-		doneIcon.sprite = props.resourceSprite;
 		speed = props.startSpeed;
 	}
 
@@ -53,12 +52,18 @@ public class Building : MonoBehaviour
 
 	public virtual void DoTasks()
 	{
-		if (taskCount == 0)
-			return;
+        if (taskCount == 0)
+        {
+            resourceObject.gameObject.SetActive(false);
+            return;
+        }
 		timer += Time.deltaTime;
+        doneCountText.text = taskCount.ToString();        
+        float xScale = timer / speed * 1.4f;
+        doneIcon.transform.localScale = new Vector3(xScale, doneIcon.transform.localScale.y, doneIcon.transform.localScale.z);
 		if (timer > speed) 
 		{
-			taskCount--;
+			taskCount--;            
 			//doneTasks++;
 			SendProduct();
 			timer = 0;
@@ -87,5 +92,6 @@ public class Building : MonoBehaviour
 	public void AddTasks(int count)
 	{
 		taskCount += count;
+        resourceObject.gameObject.SetActive(true);
 	}
 }
