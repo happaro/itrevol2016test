@@ -67,6 +67,7 @@ public class BuildProperty
 {
 	public int[] prices = new int[3];
 	public int resourcePrice;
+	public float startSpeed;
 	public string buildName;
 	public string resourceName;
 	public string description;
@@ -74,6 +75,7 @@ public class BuildProperty
 	public Sprite resourceSprite;
 	public bool mainResource = true;
 	public BuildingType inputType1, inputType2;
+
 }
 
 	
@@ -96,7 +98,8 @@ public class BASEEditor : Editor
 			_base.properties [i].prices[1] = EditorGUILayout.IntSlider ("Level 2 :", _base.properties [i].prices[1], 0, 10000);
 			_base.properties [i].prices[2] = EditorGUILayout.IntSlider ("Level 3 :", _base.properties [i].prices[2], 0, 10000);
 			GUILayout.Label ("Resource price:");
-			_base.properties [i].resourcePrice = EditorGUILayout.IntSlider ("Level:", _base.properties [i].resourcePrice, 0, 300);
+			_base.properties [i].resourcePrice = EditorGUILayout.IntSlider ("Resource price:", _base.properties [i].resourcePrice, 0, 300);
+			_base.properties [i].startSpeed = EditorGUILayout.Slider ("Start speed (sec):", _base.properties [i].startSpeed, 0, 10);
 			_base.properties [i].mainResource = EditorGUILayout.Toggle ("Main resource", _base.properties [i].mainResource);
 			if (!_base.properties [i].mainResource) 
 			{

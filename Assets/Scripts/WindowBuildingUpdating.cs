@@ -15,8 +15,7 @@ public class WindowBuildingUpdating : Window
         selectedBuilding = building;
         if (selectedBuilding != null)
         {
-            updateButton.gameObject.SetActive(CanUpdate());
-
+            updateButton.SetActive(CanUpdate());
 			nameText.text = string.Format("{0}\n(Уровень {1})", BASE.Instance.GetBuildName (building.buildingType), building.buildLevel);
 			descriptionText.text = BASE.Instance.GetDescription (building.buildingType);
             base.Open();
@@ -46,9 +45,10 @@ public class WindowBuildingUpdating : Window
 			string textAnswer = string.Format("Вы уверены, что \nхотите улучшить \n\"{0}\"\nза {1}$?", BASE.Instance.GetBuildName(selectedBuilding.buildingType), BASE.Instance.GetBuildPrice (selectedBuilding.buildingType, selectedBuilding.buildLevel));
 			WindowManager.Instance.GetWindow<WindowDialog>().Open("Улучшение", textAnswer, () => 
 				{
-					WindowManager.Instance.GetWindow<WindowDialog>().Close();
+					WindowManager.Instance.GetWindow<WindowDialog>().Close(true);
 					SaveManager.coinsCount -= BASE.Instance.GetBuildPrice (selectedBuilding.buildingType, selectedBuilding.buildLevel);
 					selectedBuilding.buildLevel++;
+					selectedBuilding.speed /= 2;
 					SetSelectedBuilding(null);
 				});
         };
@@ -65,7 +65,7 @@ public class WindowBuildingUpdating : Window
 				cashBack);
 			WindowManager.Instance.GetWindow<WindowDialog>().Open("Удаление", textAnswer, () => 
 				{
-					WindowManager.Instance.GetWindow<WindowDialog>().Close();
+					WindowManager.Instance.GetWindow<WindowDialog>().Close(true);
 					SaveManager.coinsCount += cashBack;
 					GameObject.FindObjectOfType<MapController>().buildings.Remove(selectedBuilding);
 					Destroy(selectedBuilding.gameObject);

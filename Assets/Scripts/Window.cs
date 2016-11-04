@@ -10,6 +10,7 @@ public class Window : MonoBehaviour
     public virtual void Close(bool allowScroll)
     {
         GameObject.FindObjectOfType<TouchHandler>().allowScroll = allowScroll;
+		GameObject.FindObjectOfType<TouchHandler>().isGUI = !allowScroll;
         gameObject.SetActive(false);
     }
 
@@ -19,7 +20,8 @@ public class Window : MonoBehaviour
 	}
     public virtual void Open(bool allowScroll)
     {
-        GameObject.FindObjectOfType<TouchHandler>().allowScroll = allowScroll;        
+        GameObject.FindObjectOfType<TouchHandler>().allowScroll = allowScroll;
+		GameObject.FindObjectOfType<TouchHandler>().isGUI = !allowScroll;
         gameObject.SetActive(true);
     }
 }

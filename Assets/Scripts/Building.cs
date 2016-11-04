@@ -12,7 +12,7 @@ public class Building : MonoBehaviour
 	public Button collectButton;
 
 	public int taskCount = 0;
-	public int speed = 10;
+	public float speed = 10;
 	public int doneTasks = 0;
 
 	public SpriteRenderer doneIcon;
@@ -41,6 +41,7 @@ public class Building : MonoBehaviour
 		var props = BASE.Instance.properties [(int)buildingType];
 		this.GetComponent<SpriteRenderer> ().sprite = props.sprite;
 		doneIcon.sprite = props.resourceSprite;
+		speed = props.startSpeed;
 	}
 
 	public void Update()

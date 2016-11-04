@@ -9,6 +9,32 @@ public class Button : MonoBehaviour
 	public MyAction myAction;
 
 	private Vector3 startScale;
+	public Sprite enableSprite, disableSprite;
+	public bool pushingAction = false;
+	private bool isActive = true;
+	public void SetActive(bool active)
+	{
+		GetComponent<SpriteRenderer> ().sprite = active ? enableSprite : disableSprite;
+		this.GetComponent<Collider2D> ().enabled = active;
+		isActive = active;
+	}
+
+
+	float timer = 0, delay = 0.2f;
+	void OnMouseOver()
+	{
+		if (isPressed && pushingAction && isActive) 
+		{
+			timer += Time.deltaTime;
+			if (timer > delay)
+			{
+				myAction ();
+				timer = 0;
+			}
+		}
+		else
+			timer = 0;
+	}
 
 	void Awake()
 	{

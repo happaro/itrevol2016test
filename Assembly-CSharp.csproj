@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\MapController.cs" />
      <Compile Include="Assets\Scripts\MapEditor.cs" />
+     <Compile Include="Assets\Scripts\SaleButton.cs" />
      <Compile Include="Assets\Scripts\SaveManager.cs" />
      <Compile Include="Assets\Scripts\Serializer.cs" />
      <Compile Include="Assets\Scripts\StandartButton.cs" />
@@ -74,6 +75,8 @@
      <Compile Include="Assets\Scripts\WindowInfo.cs" />
      <Compile Include="Assets\Scripts\WindowInventory.cs" />
      <Compile Include="Assets\Scripts\WindowManager.cs" />
+     <Compile Include="Assets\Scripts\WindowProductCreation.cs" />
+     <Compile Include="Assets\Scripts\WindowProductSaling.cs" />
      <Compile Include="Assets\Scripts\WindowShop.cs" />
      <None Include="Assets\HOTween\HOTween_License.txt" />
  <Reference Include="UnityEngine.UI">

@@ -1,16 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MapEditor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WindowInventory.cs">
     <Files>
-      <File FileName="Assets/Scripts/MapController.cs" Line="33" Column="38" />
-      <File FileName="Assets/Scripts/BASE.cs" Line="89" Column="28" />
-      <File FileName="Assets/Scripts/TouchHandler.cs" Line="9" Column="123" />
-      <File FileName="Assets/Scripts/StandartButton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WindowShop.cs" Line="25" Column="2" />
-      <File FileName="Assets/Scripts/MapEditor.cs" Line="36" Column="67" />
-      <File FileName="Assets/Scripts/Tile.cs" Line="11" Column="25" />
-      <File FileName="Assets/Scripts/WindowBuildingCreation.cs" Line="50" Column="17" />
-      <File FileName="Assets/Scripts/BuyButton.cs" Line="31" Column="58" />
+      <File FileName="Assets/Scripts/HumanInputer.cs" Line="24" Column="27" />
+      <File FileName="Assets/Scripts/Building.cs" Line="30" Column="3" />
+      <File FileName="Assets/Scripts/WindowInventory.cs" Line="38" Column="54" />
+      <File FileName="Assets/Scripts/WindowBuildingCreation.cs" Line="56" Column="61" />
+      <File FileName="Assets/Scripts/MapController.cs" Line="63" Column="62" />
+      <File FileName="Assets/Scripts/BASE.cs" Line="64" Column="44" />
+      <File FileName="Assets/Scripts/MainController.cs" Line="18" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

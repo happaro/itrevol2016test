@@ -14,6 +14,7 @@ public class TouchHandler : MonoBehaviour
 	public Camera GUICam;
 
 	public bool allowScroll = false;
+	public bool isGUI = false;
 	public bool moving = false;
 
 	void Start()
@@ -49,16 +50,16 @@ public class TouchHandler : MonoBehaviour
 				return;
 			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 newPosition = startMousePosition - newMousePosition;
-			HOTween.Kill (villageCam.gameObject);
-			HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
-			//villageCam.transform.position = startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0);
+			//HOTween.Kill (villageCam.gameObject);
+			//HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
+			villageCam.transform.position = startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0);
 			if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
 				scrolling = true;
         }
 
 		if (Input.GetMouseButtonUp (0) && !scrolling) 
 		{
-			if (!moving) 
+			if (!moving && !isGUI) 
 				BuildingTapCheck ();
 			moving = false;
 		}

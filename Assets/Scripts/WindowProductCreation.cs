@@ -13,9 +13,10 @@ public class WindowProductCreation : Window
     private bool isMainResource = false;
     public Building building;
     private BuildingType inputType1, inputType2;
-    public int count = 1;
-    public int inputTypecount1 = 1;
-    public int inputTypecount2 = 1;
+    int count = 0;
+    int inputTypecount1 = 0;
+    int inputTypecount2 = 0;
+
     public void Start()
     {
         cancelButton.myAction = () =>
@@ -27,13 +28,15 @@ public class WindowProductCreation : Window
             if (isMainResource)
             {
                 GameObject.FindObjectOfType<MainController>().inventory.mainProductCount -= count;
-                GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)building.buildingType] += count;
+                //GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)building.buildingType] += count;
+				building.AddTasks(count);
             }
             else
             {
                 GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] -= inputTypecount1;
                 GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2] -= inputTypecount2;
-                GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)building.buildingType] += count;
+				building.AddTasks(count);
+                //GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)building.buildingType] += count;
             }
             base.Close(true);
         };
@@ -57,15 +60,17 @@ public class WindowProductCreation : Window
             inputTypecount1 = count;
             inputTypecount2 = count;
             UpdateText();
+			UpdateButtonState();
         };
         minusButton.myAction = () =>
         {
-            if (count > 1)
+            if (count > 0)
             {
                 count--;
                 inputTypecount1 = count;
                 inputTypecount2 = count;
                 UpdateText();
+				UpdateButtonState();
             }
         };
     }
@@ -77,23 +82,39 @@ public class WindowProductCreation : Window
         inputTypecount2Text.text = inputTypecount2.ToString();
     }
 
+	void UpdateButtonState()
+	{
+		
+		if (isMainResource)
+		{
+			plusButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController> ().inventory.mainProductCount);
+		}
+		else
+		{
+			plusButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] &&
+				inputTypecount2 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2]);
+		}            
+		minusButton.SetActive (inputTypecount1 > 0);
+	}
+
     public void Open(Building b)
     {
         building = b;
-        inputTypecount1 = inputTypecount2 = count = 1;
+        inputTypecount1 = inputTypecount2 = count = 0;
         UpdateText();
         resultSprite.sprite = BASE.Instance.GetBuildingResource(building.buildingType);
         isMainResource = BASE.Instance.IsNeedMainResource(building.buildingType);
+		UpdateButtonState ();
         if (isMainResource)
         {
             resourseSprite2.transform.parent.transform.parent.gameObject.SetActive(false);
             if(inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.mainProductCount)
             {
-                okButton.gameObject.SetActive(false);
+                okButton.SetActive(false);
             }
             else
             { 
-                okButton.gameObject.SetActive(true); 
+                okButton.SetActive(true); 
             }
         }
         else
@@ -106,11 +127,11 @@ public class WindowProductCreation : Window
             if (inputTypecount1 > GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] ||
                     inputTypecount2 > GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2])
             {
-                okButton.gameObject.SetActive(false);
+                okButton.SetActive(false);
             }
             else
             {
-                okButton.gameObject.SetActive(true);
+                okButton.SetActive(true);
             }
         }
         
