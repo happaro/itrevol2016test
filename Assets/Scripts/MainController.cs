@@ -5,16 +5,18 @@ public class MainController : MonoBehaviour
 {
 	public TextMesh timerText, moneyText, expText;
 	public Camera villageCamera;
-	float timer = 300;
+	public float timer = 300;
+	bool isGameOver;
 
 	public static MainController ins;
 	public Inventory inventory;
 
 	void Awake()
 	{
+		SaveManager.currentScore = 0;
+		SaveManager.coinsCount = 5000;
 		MainController.ins = this;
 		Application.targetFrameRate = 60;
-		SaveManager.coinsCount = 5000;
 	}
 
 	void Start()
@@ -25,10 +27,20 @@ public class MainController : MonoBehaviour
 
 	void FixedUpdate () 
 	{
+		if (isGameOver)
+			return;
 		timer -= Time.deltaTime;
 		timerText.text = string.Format ("{0:00}:{1:00}", (int) timer / 60, (int) timer % 60); 
 		moneyText.text = SaveManager.coinsCount.ToString ();
 		expText.text = SaveManager.currentScore.ToString ();
+
+		if (timer < 0) 
+		{
+			isGameOver = true;
+			WindowManager.Instance.CloseAllWindow ();
+			WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Игра кончена", string.Format("Игра окончена\n\nСпасибо за игру! \n Ваш счет:\n{0}\n\nЛучший счет:\n{1}", SaveManager.currentScore, SaveManager.bestScore), () => {Application.LoadLevel(0);});
+			SaveManager.bestScore = SaveManager.bestScore < SaveManager.currentScore ? SaveManager.currentScore : SaveManager.bestScore;
+		}
 	}
 }
 

@@ -15,9 +15,16 @@ public class WindowBuildingUpdating : Window
         selectedBuilding = building;
         if (selectedBuilding != null)
         {
+			if (selectedBuilding.GetType () == typeof(HumanInputer)) {
+				nameText.text = string.Format ("{0}\n(Уровень {1})", "Аэропорт нечести", building.buildLevel);
+				descriptionText.text = "Поставка \nгрешников";
+			} 
+			else 
+			{
+				nameText.text = string.Format("{0}\n(Уровень {1})", BASE.Instance.GetBuildName (building.buildingType), building.buildLevel);
+				descriptionText.text = BASE.Instance.GetDescription (building.buildingType);
+			}
             updateButton.SetActive(CanUpdate());
-			nameText.text = string.Format("{0}\n(Уровень {1})", BASE.Instance.GetBuildName (building.buildingType), building.buildLevel);
-			descriptionText.text = BASE.Instance.GetDescription (building.buildingType);
             base.Open();
         }
         else
