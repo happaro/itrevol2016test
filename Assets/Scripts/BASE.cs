@@ -85,6 +85,7 @@ public class BASEEditor : Editor
 {
 	public override void OnInspectorGUI ()
 	{
+		base.OnInspectorGUI ();
 		var _base = target as BASE;
 		for (int i = 0; i < _base.properties.Length; i++) 
 		{

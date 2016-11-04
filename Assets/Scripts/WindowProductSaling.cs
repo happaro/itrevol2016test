@@ -17,6 +17,7 @@ public class WindowProductSaling : Window
 		{
 			main.inventory.productsCounts[(int)saleType] -= saleCount;
 			SaveManager.coinsCount += BASE.Instance.GetResourcePrice(saleType) * saleCount;
+			SaveManager.currentScore += BASE.Instance.GetResourcePrice(saleType) * saleCount;
 			base.Close(true);
 			WindowManager.Instance.GetWindow<GUI>().Open(true);
 		};

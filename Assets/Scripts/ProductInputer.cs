@@ -33,6 +33,7 @@ public class ProductInputer : MonoBehaviour
 		HOTween.To (prod.transform, 0.5f, "localScale", Vector3.one * 0.7f);
 		yield return new WaitForSeconds (0.5f);
 		prod.transform.GetChild (0).GetComponent<TextMesh> ().text = isMain ? (++MainController.ins.inventory.mainProductCount).ToString() : (++MainController.ins.inventory.productsCounts[(int)type]).ToString();
+		WindowManager.Instance.GetWindow<WindowProductCreation> ().UpdateButtonState ();
 		yield return new WaitForSeconds (0.4f);
 		HOTween.To (prod.transform, 0.5f, "position", prod.transform.position - new Vector3(3, 0, 0));
 		products.Remove (prod);

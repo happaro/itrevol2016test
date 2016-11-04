@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WindowProductCreation : Window
 {
-    public Button okButton, cancelButton, plusButton, minusButton;
+    public Button okButton, cancelButton, plusButton, minusButton, allButton;
     public TextMesh countText;
     public TextMesh inputTypecount1Text;
     public TextMesh inputTypecount2Text;
@@ -22,6 +22,7 @@ public class WindowProductCreation : Window
         cancelButton.myAction = () =>
         {
             base.Close(true);
+			WindowManager.Instance.GetWindow<GUI>().Open();
         };
 
         okButton.myAction = () =>
@@ -39,6 +40,7 @@ public class WindowProductCreation : Window
 				building.AddTasks(count);
                 //GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)building.buildingType] += count;
             }
+			WindowManager.Instance.GetWindow<GUI>().Open();
             base.Close(true);
         };
 
@@ -58,12 +60,42 @@ public class WindowProductCreation : Window
                 {
                     count++;
                 }                    
-            }            
+            }
             inputTypecount1 = count;
             inputTypecount2 = count;
             UpdateText();
 			UpdateButtonState();
         };
+
+		allButton.myAction = () =>
+		{
+			if (isMainResource)
+			{
+				if(inputTypecount1 < GameObject.FindObjectOfType<MainController>().inventory.mainProductCount)
+				{
+					count = GameObject.FindObjectOfType<MainController>().inventory.mainProductCount;
+				}
+			}
+			else
+			{
+				int in1 = GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1];
+				int in2 = GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2];
+				if (inputTypecount1 < in1 &&
+					inputTypecount2 < in2)
+				{
+					if (in1 > in2)
+						count = in2;
+					else
+						count = in1;
+				}                    
+			}
+			inputTypecount1 = count;
+			inputTypecount2 = count;
+			UpdateText();
+			UpdateButtonState();
+		};
+
+
         minusButton.myAction = () =>
         {
             if (count > 0)
@@ -84,16 +116,20 @@ public class WindowProductCreation : Window
         inputTypecount2Text.text = inputTypecount2.ToString();
     }
 
-	void UpdateButtonState()
+	public void UpdateButtonState()
 	{
 		
 		if (isMainResource)
 		{
 			plusButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController> ().inventory.mainProductCount);
+
+			allButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController> ().inventory.mainProductCount);
 		}
 		else
 		{
 			plusButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] &&
+				inputTypecount2 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2]);
+			allButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType1] &&
 				inputTypecount2 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2]);
 		}            
 		minusButton.SetActive (inputTypecount1 > 0);

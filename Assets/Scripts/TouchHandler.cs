@@ -82,6 +82,8 @@ public class TouchHandler : MonoBehaviour
                         if (!(building is HumanInputer))
                         {
                             WindowManager.Instance.GetWindow<WindowProductCreation>().Open(building);
+							WindowManager.Instance.GetWindow<GUI> ().Close (false);
+							upgradingWindow.SetSelectedBuilding(null);
                         }                        
                     }
                 }
