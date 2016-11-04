@@ -44,7 +44,7 @@ public class TouchHandler : MonoBehaviour
 				BuildingTapCheck ();
 				return;
 			}
-            Debug.Log(allowScroll);
+
 			if (!allowScroll)
 				return;
 			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
@@ -71,8 +71,18 @@ public class TouchHandler : MonoBehaviour
 		if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
 		{
 			//якщо відкрито вікно оновлення - закриваєм його
-			if (upgradingWindow.selectedBuilding)
-				upgradingWindow.SetSelectedBuilding(null);
+            if (upgradingWindow.selectedBuilding)
+            {
+                if (hit.collider != null && hit.transform.tag == "Building")
+                {
+                    var building = hit.transform.GetComponent<Building>();
+                    if (upgradingWindow.selectedBuilding == building)
+                    {
+                        WindowManager.Instance.GetWindow<WindowProductCreation>().Open(building);
+                    }
+                }
+                upgradingWindow.SetSelectedBuilding(null);
+            }
 			if (creatingWindow.selectedBuilding)
 			{
 				Point point = CoordinateConvertor.IsoToSimple(hit.point);

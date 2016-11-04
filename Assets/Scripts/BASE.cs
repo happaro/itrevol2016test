@@ -48,6 +48,10 @@ public class BASE : MonoBehaviour
 	{
 		return properties[(int)type].description;
 	}
+    public bool IsNeedMainResource(BuildingType type)
+    {
+        return properties[(int)type].mainResource;
+    }
 }
 
 [Serializable]
