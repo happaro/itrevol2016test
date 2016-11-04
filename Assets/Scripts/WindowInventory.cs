@@ -52,7 +52,7 @@ public class WindowInventory : Window
 				var button = go.GetComponent<BuyButton> ();
 				button.type = (BuildingType)i;
 				button.price.text = BASE.Instance.GetResourcePrice (button.type).ToString() + "$";
-				button.name.text = MainController.ins.inventory.mainProductCount.ToString ();
+				button.name.text = MainController.ins.inventory.productsCounts[i].ToString ();
 				button.icon.sprite = BASE.Instance.GetBuildingResource (button.type);
 				button.transform.parent = transform;
 				buttons.Add (button);

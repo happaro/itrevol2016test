@@ -52,6 +52,14 @@ public class BASE : MonoBehaviour
     {
         return properties[(int)type].mainResource;
     }
+    public BuildingType GetInputType1(BuildingType type)
+    {
+        return properties[(int)type].inputType1;
+    }
+    public BuildingType GetInputType2(BuildingType type)
+    {
+        return properties[(int)type].inputType2;
+    }
 }
 
 [Serializable]

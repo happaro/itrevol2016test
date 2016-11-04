@@ -78,7 +78,10 @@ public class TouchHandler : MonoBehaviour
                     var building = hit.transform.GetComponent<Building>();
                     if (upgradingWindow.selectedBuilding == building)
                     {
-                        WindowManager.Instance.GetWindow<WindowProductCreation>().Open(building);
+                        if (!(building is HumanInputer))
+                        {
+                            WindowManager.Instance.GetWindow<WindowProductCreation>().Open(building);
+                        }                        
                     }
                 }
                 upgradingWindow.SetSelectedBuilding(null);
