@@ -1,14 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WindowInventory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/GPGSAndroidSetupUI.cs">
     <Files>
-      <File FileName="Assets/Scripts/HumanInputer.cs" Line="24" Column="27" />
-      <File FileName="Assets/Scripts/Building.cs" Line="30" Column="3" />
-      <File FileName="Assets/Scripts/WindowInventory.cs" Line="38" Column="54" />
-      <File FileName="Assets/Scripts/WindowBuildingCreation.cs" Line="56" Column="61" />
-      <File FileName="Assets/Scripts/MapController.cs" Line="63" Column="62" />
-      <File FileName="Assets/Scripts/BASE.cs" Line="64" Column="44" />
-      <File FileName="Assets/Scripts/MainController.cs" Line="18" Column="3" />
+      <File FileName="Assets/Scripts/MainController.cs" Line="6" Column="1" />
+      <File FileName="../../red-tube/_UnityProjects/Assets/_Game/Scripts/Button.cs" Line="1" Column="1" />
+      <File FileName="Assets/GooglePlayGames/ISocialPlatform/PlayGamesPlatform.cs" Line="75" Column="60" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/GameHelperManager.cs" Line="100" Column="45" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/AchievementBank.cs" Line="74" Column="94" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/AndroidClient.cs" Line="84" Column="88" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/AndroidRtmpClient.cs" Line="856" Column="70" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/AndroidTbmpClient.cs" Line="317" Column="50" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/JavaUtil.cs" Line="120" Column="58" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/NoopProxy.cs" Line="34" Column="44" />
+      <File FileName="Assets/GooglePlayGames/Platforms/Android/OnStateResultProxy.cs" Line="124" Column="42" />
+      <File FileName="Assets/Editor/GPGSAndroidSetupUI.cs" Line="78" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using GooglePlayGames.BasicApi;
+//using GooglePlayGames;
 
 public class MainController : MonoBehaviour 
 {
@@ -17,6 +19,34 @@ public class MainController : MonoBehaviour
 		SaveManager.coinsCount = 5000;
 		MainController.ins = this;
 		Application.targetFrameRate = 60;
+	}
+
+	void ReportScore()
+	{
+		#if UNITY_ANDROID
+		/*PlayGamesPlatform.Activate();
+		if (!Social.localUser.authenticated)
+		{
+			Social.localUser.Authenticate(authenticated =>
+				{
+					Social.ReportScore(PlayerPrefs.GetInt ("Score"), "CgkI4Mqg1dYXEAIQAA", (bool success) =>
+						{
+							if (success)
+								((PlayGamesPlatform)Social.Active).ShowLeaderboardUI("CgkI4Mqg1dYXEAIQAA");
+							else{}
+						});
+				});
+		}
+		else
+		{
+			Social.ReportScore(PlayerPrefs.GetInt ("Score"), "CgkI4Mqg1dYXEAIQAA", (bool success) =>
+				{
+					if (success)
+						((PlayGamesPlatform)Social.Active).ShowLeaderboardUI("CgkI4Mqg1dYXEAIQAA");
+					else{}
+				});
+		}*/
+		#endif
 	}
 
 	void Start()
