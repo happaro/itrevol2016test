@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public enum BuildingType {HandBuilding = 0, FootBuilding, HandFooter}
 
@@ -58,10 +59,17 @@ public class Building : MonoBehaviour
 		if (timer > speed) 
 		{
 			taskCount--;
-			doneTasks++;
+			//doneTasks++;
+			SendProduct();
 			timer = 0;
 		}
-		UpdateGetter ();
+		//UpdateGetter ();
+	}
+
+
+	void SendProduct()
+	{
+		ProductInputer.ins.InputProduct (buildingType);
 	}
 
 	public virtual void CollectResources()
