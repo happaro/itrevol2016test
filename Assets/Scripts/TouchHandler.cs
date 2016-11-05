@@ -4,29 +4,29 @@ using Holoville.HOTween;
 
 public class TouchHandler : MonoBehaviour
 {
-	WindowBuildingUpdating upgradingWindow;
-	WindowBuildingCreation creatingWindow;
-	bool scrolling = false;
+    WindowBuildingUpdating upgradingWindow;
+    WindowBuildingCreation creatingWindow;
+    bool scrolling = false;
 
-	public Vector3 startMousePosition;
-	public Vector3 startCameraPosition;
-	public Camera villageCam;
-	public Camera GUICam;
+    public Vector3 startMousePosition;
+    public Vector3 startCameraPosition;
+    public Camera villageCam;
+    public Camera GUICam;
 
-	public bool allowScroll = false;
-	public bool isGUI = false;
-	public bool moving = false;
+    public bool allowScroll = false;
+    public bool isGUI = false;
+    public bool moving = false;
 
     public float orthoZoomSpeed = 0.01f;        // The rate of change of the orthographic size in orthographic mode.
     public float orthoMinSize = 0.8f;
-    public float orthoMaxSize = 4f;       
+    public float orthoMaxSize = 4f;
 
-	void Start()
-	{
-		upgradingWindow = WindowManager.Instance.GetWindow<WindowBuildingUpdating> ();
-		creatingWindow = WindowManager.Instance.GetWindow<WindowBuildingCreation> ();
-		scrolling = false;
-	}
+    void Start()
+    {
+        upgradingWindow = WindowManager.Instance.GetWindow<WindowBuildingUpdating>();
+        creatingWindow = WindowManager.Instance.GetWindow<WindowBuildingCreation>();
+        scrolling = false;
+    }
 
     void Update()
     {
@@ -46,63 +46,64 @@ public class TouchHandler : MonoBehaviour
 
             // Find the difference in the distances between each frame.
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-            
-                // ... change the orthographic size based on the change in distance between the touches.
+
+            // ... change the orthographic size based on the change in distance between the touches.
             villageCam.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
-                // Make sure the orthographic size never drops below zero.
+            // Make sure the orthographic size never drops below zero.
             villageCam.orthographicSize = Mathf.Max(villageCam.orthographicSize, 0.1f);
 
             if (villageCam.orthographicSize > orthoMaxSize) villageCam.orthographicSize = orthoMaxSize;
             if (villageCam.orthographicSize < orthoMinSize) villageCam.orthographicSize = orthoMinSize;
-            
+            return;
         }
 
-		if (Input.GetMouseButtonDown (0))
-		{
-			startMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
-			startCameraPosition = villageCam.transform.position;
-			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-			if (hit.collider != null && creatingWindow.selectedBuilding != null && hit.collider.gameObject == creatingWindow.selectedBuilding.gameObject)
-				moving = true;
-			scrolling = false;
-		}
-			
+        if (Input.GetMouseButtonDown(0))
+        {
+            startMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
+            startCameraPosition = villageCam.transform.position;
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null && creatingWindow.selectedBuilding != null && hit.collider.gameObject == creatingWindow.selectedBuilding.gameObject)
+                moving = true;
+            scrolling = false;
+        }
+
 
         if (Input.GetMouseButton(0))
         {
-			if (moving) 
-			{
-				BuildingTapCheck ();
-				return;
-			}
+            if (moving)
+            {
+                BuildingTapCheck();
+                return;
+            }
 
-			if (!allowScroll)
-				return;
-			var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
-			Vector3 newPosition = startMousePosition - newMousePosition;
-			//HOTween.Kill (villageCam.gameObject);
-			//HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
-			villageCam.transform.position = startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0);
-			if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
-				scrolling = true;
+            if (!allowScroll)
+                return;
+            var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 newPosition = startMousePosition - newMousePosition;
+            //HOTween.Kill (villageCam.gameObject);
+            //HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
+            
+                villageCam.transform.position = startCameraPosition + new Vector3(newPosition.x, newPosition.y, 0);
+            if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
+                scrolling = true;
         }
 
-		if (Input.GetMouseButtonUp (0) && !scrolling) 
-		{
-			if (!moving && !isGUI) 
-				BuildingTapCheck ();
-			moving = false;
-		}
+        if (Input.GetMouseButtonUp(0) && !scrolling)
+        {
+            if (!moving && !isGUI)
+                BuildingTapCheck();
+            moving = false;
+        }
 
 
     }
-	void BuildingTapCheck()
-	{
-		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-		if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
-		{
-			//якщо відкрито вікно оновлення - закриваєм його
+    void BuildingTapCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
+        {
+            //якщо відкрито вікно оновлення - закриваєм його
             if (upgradingWindow.selectedBuilding)
             {
                 if (hit.collider != null && hit.transform.tag == "Building")
@@ -113,31 +114,31 @@ public class TouchHandler : MonoBehaviour
                         if (!(building is HumanInputer))
                         {
                             WindowManager.Instance.GetWindow<WindowProductCreation>().Open(building);
-							WindowManager.Instance.GetWindow<GUI> ().Close (false);
-							upgradingWindow.SetSelectedBuilding(null);
-                        }                        
+                            WindowManager.Instance.GetWindow<GUI>().Close(false);
+                            upgradingWindow.SetSelectedBuilding(null);
+                        }
                     }
                 }
                 upgradingWindow.SetSelectedBuilding(null);
             }
-			if (creatingWindow.selectedBuilding)
-			{
-				Point point = CoordinateConvertor.IsoToSimple(hit.point);
-				creatingWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
-			}
-		}
-		// якщо начого не строїмо
-		if(!creatingWindow.selectedBuilding)
-		{
-			// і натискаєм на побудований будинок
-			if (hit.collider != null && hit.transform.tag == "Building")
-			{
-				var building = hit.transform.GetComponent<Building>();
-				upgradingWindow.SetSelectedBuilding (building);
-				Point point = CoordinateConvertor.IsoToSimple(building.transform.position);
-				upgradingWindow.SetPosition (CoordinateConvertor.SimpleToIso (point));
-			}
-		}	
-	}
+            if (creatingWindow.selectedBuilding)
+            {
+                Point point = CoordinateConvertor.IsoToSimple(hit.point);
+                creatingWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
+            }
+        }
+        // якщо начого не строїмо
+        if (!creatingWindow.selectedBuilding)
+        {
+            // і натискаєм на побудований будинок
+            if (hit.collider != null && hit.transform.tag == "Building")
+            {
+                var building = hit.transform.GetComponent<Building>();
+                upgradingWindow.SetSelectedBuilding(building);
+                Point point = CoordinateConvertor.IsoToSimple(building.transform.position);
+                upgradingWindow.SetPosition(CoordinateConvertor.SimpleToIso(point));
+            }
+        }
+    }
 
 }
