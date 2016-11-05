@@ -12,10 +12,11 @@ public class Button : MonoBehaviour
 	public Sprite enableSprite, disableSprite;
 	public bool pushingAction = false;
 	private bool isActive = true;
-	public void SetActive(bool active)
+
+	public void SetActive(bool active, bool collider = false)
 	{
 		GetComponent<SpriteRenderer> ().sprite = active ? enableSprite : disableSprite;
-		this.GetComponent<Collider2D> ().enabled = active;
+		this.GetComponent<Collider2D> ().enabled = active ? true : collider;
 		isActive = active;
 	}
 

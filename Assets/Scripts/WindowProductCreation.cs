@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WindowProductCreation : Window
 {
-    public Button okButton, cancelButton, plusButton, minusButton, allButton;
+    public Button okButton, cancelButton, plusButton, minusButton, allButton, autoButton;
     public TextMesh countText;
     public TextMesh inputTypecount1Text;
     public TextMesh inputTypecount2Text;
@@ -16,6 +16,8 @@ public class WindowProductCreation : Window
     int count = 0;
     int inputTypecount1 = 0;
     int inputTypecount2 = 0;
+	//bool autoCreating = false;
+
 
     public void Start()
     {
@@ -107,7 +109,20 @@ public class WindowProductCreation : Window
 				UpdateButtonState();
             }
         };
+
+		autoButton.myAction = () => 
+		{
+			building.autoCreation = !building.autoCreation;
+			UpdateButtonState();
+		};
     }
+
+	void FixedUpdate()
+	{
+		if (building != null && building.autoCreation)
+			//autoButton.transform.localScale = Vector3.one * (0.8f - Mathf.Abs(Mathf.Sin (Time.time) * 0.2f));
+			autoButton.transform.Rotate(0, 0, -3);
+	}
 
     void UpdateText()
     {
@@ -118,11 +133,9 @@ public class WindowProductCreation : Window
 
 	public void UpdateButtonState()
 	{
-		
 		if (isMainResource)
 		{
 			plusButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController> ().inventory.mainProductCount);
-
 			allButton.SetActive (inputTypecount1 < GameObject.FindObjectOfType<MainController> ().inventory.mainProductCount);
 		}
 		else
@@ -133,8 +146,17 @@ public class WindowProductCreation : Window
 				inputTypecount2 < GameObject.FindObjectOfType<MainController>().inventory.productsCounts[(int)inputType2]);
 		}            
 		minusButton.SetActive (inputTypecount1 > 0);
-
 		okButton.SetActive (inputTypecount1 > 0);
+		autoButton.SetActive (false, true);
+
+		if (building != null && building.autoCreation) 
+		{
+			okButton.SetActive (false);
+			minusButton.SetActive (false);
+			plusButton.SetActive (false);
+			allButton.SetActive (false);
+			autoButton.SetActive (true, true);
+		}
 	}
 
     public void Open(Building b)

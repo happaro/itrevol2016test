@@ -25,6 +25,7 @@ public class Building : MonoBehaviour
 
 	public BuildingType inputResourceType1, inputResourceType2;
 	public bool inputMeat = true;
+	public bool autoCreation = false;
 
 
 	public void Start()
@@ -52,23 +53,48 @@ public class Building : MonoBehaviour
 
 	public virtual void DoTasks()
 	{
-        if (taskCount == 0)
+		if (autoCreation) 
+		{
+			if (taskCount == 0) 
+			{
+				if (inputMeat) 
+				{
+					if (MainController.ins.inventory.mainProductCount > 0) 
+					{
+						MainController.ins.inventory.mainProductCount--;
+						taskCount = 1;
+						resourceObject.gameObject.SetActive (true);
+					}
+				} 
+				else 
+				{
+					if (MainController.ins.inventory.productsCounts [(int)inputResourceType1] > 0
+					    && MainController.ins.inventory.productsCounts [(int)inputResourceType2] > 0) 
+					{
+						MainController.ins.inventory.productsCounts [(int)inputResourceType1]--;
+						MainController.ins.inventory.productsCounts [(int)inputResourceType2]--;
+						taskCount = 1;
+						resourceObject.gameObject.SetActive (true);
+					}
+				}
+			}
+				
+		}
+		else if (taskCount == 0)
         {
             resourceObject.gameObject.SetActive(false);
             return;
         }
 		timer += Time.deltaTime;
-        doneCountText.text = taskCount.ToString();        
+		doneCountText.text = autoCreation ? "auto" : taskCount.ToString ();
         float xScale = timer / speed * 1.4f;
         doneIcon.transform.localScale = new Vector3(xScale, doneIcon.transform.localScale.y, doneIcon.transform.localScale.z);
 		if (timer > speed) 
 		{
 			taskCount--;            
-			//doneTasks++;
 			SendProduct();
 			timer = 0;
 		}
-		//UpdateGetter ();
 	}
 
 
