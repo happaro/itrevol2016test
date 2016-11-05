@@ -44,7 +44,8 @@ public class Button : MonoBehaviour
 
 	void DownAction()
 	{
-		transform.localScale = startScale * 0.9f;	
+		transform.localScale = startScale * 0.9f;
+        AudioManager.Instance.Click();
 	}
 
 	void UpAction()

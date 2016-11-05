@@ -16,6 +16,7 @@ public class WindowBuildingUpdating : Window
         if (building != null)
         {
             selectedBuilding = building;
+            AudioManager.Instance.Select();
             selectedBuilding.GetComponent<SpriteRenderer>().color = new Color(0.6f, 1, 1);
             if (selectedBuilding is HumanInputer)
             {
