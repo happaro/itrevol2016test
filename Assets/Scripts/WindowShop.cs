@@ -8,7 +8,6 @@ public class WindowShop : Window
     public Button prevButton;
 	public BuyButton[] buttons;
 	int currentPage = 0;
-
 	void Start () 
 	{
 		closeButton.myAction = () => 
@@ -41,6 +40,22 @@ public class WindowShop : Window
 
 	void UpdateItems()
 	{
+        if (currentPage == 0)
+        {
+            prevButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            prevButton.gameObject.SetActive(true);
+        }
+        if (currentPage == BASE.Instance.properties.Length / 3)
+        {
+            nextButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true);
+        }
 		for (int i = 0; i < buttons.Length; i++) 
 		{
 			if (BASE.Instance.properties.Length > currentPage * buttons.Length + i) 
