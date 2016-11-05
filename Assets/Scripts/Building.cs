@@ -2,7 +2,7 @@
 using System.Collections;
 using Holoville.HOTween;
 
-public enum BuildingType {HandBuilding = 0, FootBuilding, HandFooter}
+public enum BuildingType { Hand = 0, Foot, Eye, HandFoot, EyeFoot }
 
 public class Building : MonoBehaviour 
 {

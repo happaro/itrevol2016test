@@ -36,7 +36,7 @@ public class MapController : MonoBehaviour
 		go.transform.parent = buildingCreationWindow.transform;
 		buildingCreationWindow.SetSelectedBuilding(building);
 		buildingCreationWindow.SetPosition(buildingCreationWindow.transform.position);
-		building.InitializeBuilding (BuildingType.FootBuilding);
+		building.InitializeBuilding (BuildingType.Foot);
 	}
 
     public void FinishBuilding()
@@ -58,7 +58,7 @@ public class MapController : MonoBehaviour
 		Instantiate (basePrefab);
 		//InitTiles();
 		ItitMap ();
-		WindowManager.Instance.GetWindow<WindowInfo> ().Open ("Tutorial", "Hello, mutherfucker\n For now, build your\nfirst fucking building!", () =>
+        WindowManager.Instance.GetWindow<WindowInfo>().Open("Tutorial", "Приветули, молодой Босс.\n Настало время открыть \n свой бизнес! Давай \n же поднимем баблишка! \n Построй свое первое здание,\n которое станет\n источником сырья.", () =>
 			{
 				WindowManager.Instance.GetWindow<WindowInfo>().Close(true);
 				//WindowManager.Instance.GetWindow<GUI>().Open();
