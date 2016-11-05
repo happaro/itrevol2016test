@@ -96,10 +96,10 @@ public class TouchHandler : MonoBehaviour
             //HOTween.Kill (villageCam.gameObject);
             //HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0)); 
             villageCam.transform.position = startCameraPosition + new Vector3(newPosition.x, newPosition.y, 0);
-            if (villageCam.transform.position.x > 10) villageCam.transform.position = new Vector3(10, villageCam.transform.position.y, villageCam.transform.position.z);
-            if (villageCam.transform.position.x < -10) villageCam.transform.position = new Vector3(-10, villageCam.transform.position.y, villageCam.transform.position.z);
-            if (villageCam.transform.position.y > 15) villageCam.transform.position = new Vector3(villageCam.transform.position.x, 15, villageCam.transform.position.z);
-            if (villageCam.transform.position.y < 0) villageCam.transform.position = new Vector3(villageCam.transform.position.x, 0, villageCam.transform.position.z);
+            if (villageCam.transform.position.x > 7) villageCam.transform.position = new Vector3(7, villageCam.transform.position.y, villageCam.transform.position.z);
+            if (villageCam.transform.position.x < -7) villageCam.transform.position = new Vector3(-7, villageCam.transform.position.y, villageCam.transform.position.z);
+            if (villageCam.transform.position.y > 12) villageCam.transform.position = new Vector3(villageCam.transform.position.x, 12, villageCam.transform.position.z);
+            if (villageCam.transform.position.y < 3) villageCam.transform.position = new Vector3(villageCam.transform.position.x, 3, villageCam.transform.position.z);
             if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
             {
                 scrolling = true;
