@@ -57,19 +57,17 @@ public class TouchHandler : MonoBehaviour
             if (villageCam.orthographicSize < orthoMinSize) villageCam.orthographicSize = orthoMinSize;
             return;
         }
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
             startMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
             startCameraPosition = villageCam.transform.position;
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null && creatingWindow.selectedBuilding != null && hit.collider.gameObject == creatingWindow.selectedBuilding.gameObject)
                 moving = true;
-            scrolling = false;
         }
 
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
             if (moving)
             {
@@ -82,14 +80,13 @@ public class TouchHandler : MonoBehaviour
             var newMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 newPosition = startMousePosition - newMousePosition;
             //HOTween.Kill (villageCam.gameObject);
-            //HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));
-            
-                villageCam.transform.position = startCameraPosition + new Vector3(newPosition.x, newPosition.y, 0);
+            //HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));            
+            villageCam.transform.position = startCameraPosition + new Vector3(newPosition.x, newPosition.y, 0);
             if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
                 scrolling = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && !scrolling)
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             if (!moving && !isGUI)
                 BuildingTapCheck();
@@ -98,6 +95,7 @@ public class TouchHandler : MonoBehaviour
 
 
     }
+
     void BuildingTapCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
