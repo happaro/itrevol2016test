@@ -5,6 +5,7 @@ public class WindowBuildingUpdating : Window
 {
     public Button updateButton;
     public Button deleteButton;
+    public Button productsButton;
     public Building selectedBuilding;
 
     public TextMesh nameText, descriptionText;
@@ -21,6 +22,7 @@ public class WindowBuildingUpdating : Window
                 nameText.text = string.Format("{0}\n(Уровень {1})", "Аэропорт нечести", building.buildLevel);
                 descriptionText.text = "Поставка \nгрешников";
                 deleteButton.gameObject.SetActive(false);
+                productsButton.gameObject.SetActive(false);
                 base.Open();
             }
             else
@@ -28,6 +30,7 @@ public class WindowBuildingUpdating : Window
                 nameText.text = string.Format("{0}\n(Уровень {1})", BASE.Instance.GetBuildName(building.buildingType), building.buildLevel);
                 descriptionText.text = BASE.Instance.GetDescription(building.buildingType);
                 deleteButton.gameObject.SetActive(true);
+                productsButton.gameObject.SetActive(true);
             }
             updateButton.SetActive(CanUpdate());
             WindowManager.Instance.GetWindow<GUI>().Close();
@@ -57,6 +60,13 @@ public class WindowBuildingUpdating : Window
 
     void Start()
     {
+        productsButton.myAction = () =>
+            {
+                WindowManager.Instance.GetWindow<WindowProductCreation>().Open(selectedBuilding);
+                WindowManager.Instance.GetWindow<GUI>().Close(false);
+                WindowManager.Instance.GetWindow<WindowBuildingUpdating>().SetSelectedBuilding(null);
+            };
+
         updateButton.myAction = () =>
         {
             string textAnswer = string.Format("Вы уверены, что \nхотите улучшить \n\"{0}\"\nза {1}$?", BASE.Instance.GetBuildName(selectedBuilding.buildingType), BASE.Instance.GetBuildPrice(selectedBuilding.buildingType, selectedBuilding.buildLevel));

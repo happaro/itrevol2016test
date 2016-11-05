@@ -47,7 +47,7 @@ public class WindowBuildingCreation : Window
     {
         foreach (var building in GameObject.FindObjectOfType<MapController>().buildings)
         {
-            if(building.transform.position.x == transform.position.x && building.transform.position.y == transform.position.y)
+            if (building.transform.position.x == selectedBuilding.transform.position.x && building.transform.position.y == selectedBuilding.transform.position.y)
             {
                 return false;
             }
