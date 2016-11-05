@@ -66,6 +66,7 @@ public class WindowBuildingUpdating : Window
                 WindowManager.Instance.GetWindow<GUI>().Close(false);
                 WindowManager.Instance.GetWindow<WindowBuildingUpdating>().SetSelectedBuilding(null);
             };
+        base.Close();
 
         updateButton.myAction = () =>
         {
@@ -78,6 +79,7 @@ public class WindowBuildingUpdating : Window
                     selectedBuilding.speed /= 2;
                     SetSelectedBuilding(null);
                 });
+            base.Close();
         };
 
         deleteButton.myAction = () =>
@@ -98,6 +100,7 @@ public class WindowBuildingUpdating : Window
                     Destroy(selectedBuilding.gameObject);
                     SetSelectedBuilding(null);
                 });
+            base.Close();
 
 
         };
