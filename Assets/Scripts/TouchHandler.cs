@@ -97,7 +97,14 @@ public class TouchHandler : MonoBehaviour
             //HOTween.To(villageCam.transform, 0.3f, "position", startCameraPosition + new Vector3 (newPosition.x, newPosition.y, 0));            
             villageCam.transform.position = startCameraPosition + new Vector3(newPosition.x, newPosition.y, 0);
             if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
+            {
                 scrolling = true;
+            }
+            else
+            {
+                scrolling = false;
+            }
+           
         }
         bool ended = Input.GetMouseButtonUp(0); 
         #if UNITY_ANDROID
@@ -114,7 +121,8 @@ public class TouchHandler : MonoBehaviour
     }
 
     void BuildingTapCheck()
-    {        
+    {
+        Debug.Log("BuildingTapCheck");
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
         {
