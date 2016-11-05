@@ -30,6 +30,9 @@ public class TouchHandler : MonoBehaviour
 
     void Update()
     {
+
+		if (Input.touchCount == 0)
+			return;
         //Zoom
         if (Input.touchCount == 2)
         {

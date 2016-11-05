@@ -31,10 +31,10 @@ public class Building : MonoBehaviour
 	public void Start()
 	{
 		main = GameObject.FindObjectOfType<MainController> ();
-		collectButton.myAction = () => {
+/*		collectButton.myAction = () => {
 			CollectResources ();
 			UpdateGetter();
-		};
+		};*/
 	}
 
 	public virtual void InitializeBuilding(BuildingType type)
