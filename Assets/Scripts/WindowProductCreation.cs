@@ -125,6 +125,7 @@ public class WindowProductCreation : Window
         if (gameObject.active == true)
         {
             WindowManager.Instance.GetWindow<WindowBuildingUpdating>().Close();
+            WindowManager.Instance.GetWindow<GUI>().Close();
         }
 	}
 
