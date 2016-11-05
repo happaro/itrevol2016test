@@ -14,7 +14,7 @@ public class HumanInputer : Building
 		{            
 			doneTasks++;
 			timer = 0;
-			ProductInputer.ins.InputProduct (BuildingType.FootBuilding, true);
+			ProductInputer.ins.InputProduct (BuildingType.Foot, true);
 			//UpdateGetter ();
 		}
 	}

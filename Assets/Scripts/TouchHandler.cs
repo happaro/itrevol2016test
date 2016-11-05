@@ -17,6 +17,10 @@ public class TouchHandler : MonoBehaviour
 	public bool isGUI = false;
 	public bool moving = false;
 
+    public float orthoZoomSpeed = 0.01f;        // The rate of change of the orthographic size in orthographic mode.
+    public float orthoMinSize = 0.8f;
+    public float orthoMaxSize = 4f;       
+
 	void Start()
 	{
 		upgradingWindow = WindowManager.Instance.GetWindow<WindowBuildingUpdating> ();
@@ -26,6 +30,33 @@ public class TouchHandler : MonoBehaviour
 
     void Update()
     {
+        //Zoom
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            // Find the position in the previous frame of each touch.
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // Find the difference in the distances between each frame.
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+            
+                // ... change the orthographic size based on the change in distance between the touches.
+            villageCam.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+                // Make sure the orthographic size never drops below zero.
+            villageCam.orthographicSize = Mathf.Max(villageCam.orthographicSize, 0.1f);
+
+            if (villageCam.orthographicSize > orthoMaxSize) villageCam.orthographicSize = orthoMaxSize;
+            if (villageCam.orthographicSize < orthoMinSize) villageCam.orthographicSize = orthoMinSize;
+            
+        }
 
 		if (Input.GetMouseButtonDown (0))
 		{
