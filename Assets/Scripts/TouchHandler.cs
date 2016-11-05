@@ -20,7 +20,7 @@ public class TouchHandler : MonoBehaviour
     public float orthoZoomSpeed = 0.01f;        // The rate of change of the orthographic size in orthographic mode.
     public float orthoMinSize = 0.8f;
     public float orthoMaxSize = 4f;
-
+    private bool wasDoubletouch = false;
     void Start()
     {
         upgradingWindow = WindowManager.Instance.GetWindow<WindowBuildingUpdating>();
@@ -31,8 +31,10 @@ public class TouchHandler : MonoBehaviour
     void Update()
     {
 
-		if (Input.touchCount == 0)
+		#if UNITY_ANDROID
+        if(Input.touchCount == 0)
 			return;
+        #endif
         //Zoom
         if (Input.touchCount == 2)
         {
@@ -58,10 +60,16 @@ public class TouchHandler : MonoBehaviour
 
             if (villageCam.orthographicSize > orthoMaxSize) villageCam.orthographicSize = orthoMaxSize;
             if (villageCam.orthographicSize < orthoMinSize) villageCam.orthographicSize = orthoMinSize;
+            wasDoubletouch = true;
             return;
         }
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        bool began = Input.GetMouseButtonDown(0); 
+        #if UNITY_ANDROID
+        began = Input.GetTouch(0).phase == TouchPhase.Began;
+        #endif
+        if (began || wasDoubletouch)
         {
+            wasDoubletouch = false;
             startMousePosition = GUICam.ScreenToWorldPoint(Input.mousePosition);
             startCameraPosition = villageCam.transform.position;
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -69,8 +77,11 @@ public class TouchHandler : MonoBehaviour
                 moving = true;
         }
 
-
-        if (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary)
+        bool moved = Input.GetMouseButton(0); 
+        #if UNITY_ANDROID
+        moved = Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary;
+        #endif
+        if (moved)
         {
             if (moving)
             {
@@ -88,10 +99,13 @@ public class TouchHandler : MonoBehaviour
             if (Mathf.Abs(newPosition.x) > 0.3f || Mathf.Abs(newPosition.y) > 0.3f)
                 scrolling = true;
         }
-
-        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        bool ended = Input.GetMouseButtonUp(0); 
+        #if UNITY_ANDROID
+        ended = Input.GetTouch(0).phase == TouchPhase.Ended;
+        #endif
+        if (ended)
         {
-            if (!moving && !isGUI)
+            if (!moving && !isGUI && !scrolling)
                 BuildingTapCheck();
             moving = false;
         }
@@ -100,10 +114,11 @@ public class TouchHandler : MonoBehaviour
     }
 
     void BuildingTapCheck()
-    {
+    {        
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null && (hit.transform.tag == "Tile" || hit.transform.tag == "Building"))
         {
+            Debug.Log(hit.transform.tag);
             //якщо відкрито вікно оновлення - закриваєм його
             if (upgradingWindow.selectedBuilding)
             {

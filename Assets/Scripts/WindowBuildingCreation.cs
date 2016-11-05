@@ -12,6 +12,14 @@ public class WindowBuildingCreation : Window
         selectedBuilding = building;
         if (selectedBuilding != null)
         {
+            if (building is HumanInputer)
+            {
+                cancelButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                cancelButton.gameObject.SetActive(true);
+            }
             base.Open();
         }
         else
@@ -22,7 +30,7 @@ public class WindowBuildingCreation : Window
 
     public void SetPosition(Vector3 position)
     {
-        transform.position = new Vector3(position.x,position.y,position.z-0.1f);
+        selectedBuilding.transform.position = new Vector3(position.x, position.y, position.z - 0.1f);
         okButton.gameObject.SetActive(CanBuild());
 
 		if(CanBuild())
