@@ -4,6 +4,8 @@ using System.Collections;
 public class WindowShop : Window 
 {
 	public Button closeButton;
+    public Button nextButton;
+    public Button prevButton;
 	public BuyButton[] buttons;
 	int currentPage = 0;
 
@@ -14,6 +16,20 @@ public class WindowShop : Window
             base.Close(true);
 			WindowManager.Instance.GetWindow<GUI>().Open();
 		};
+        nextButton.myAction = () =>
+        {
+            if (currentPage < BASE.Instance.properties.Length/3)
+            currentPage++;
+            UpdateItems();
+        };
+        prevButton.myAction = () =>
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+            }            
+            UpdateItems();
+        };
 		//UpdateItems ();
 	}
 
@@ -35,10 +51,11 @@ public class WindowShop : Window
 				buttons [i].GetComponent<SpriteRenderer>().sprite = BASE.Instance.GetBuildingSprite(bType);
 				buttons [i].name.text = BASE.Instance.GetBuildName(bType);
 				buttons [i].price.text = BASE.Instance.GetBuildPrice(bType, 0).ToString();
+                buttons[i].transform.parent.transform.parent.gameObject.SetActive(true);
 			}
 			else 
 			{
-				buttons [i].transform.parent.gameObject.SetActive (false);
+                buttons[i].transform.parent.transform.parent.gameObject.SetActive(false);
 			}
 			
 		}
