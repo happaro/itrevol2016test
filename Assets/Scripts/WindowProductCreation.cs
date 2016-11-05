@@ -122,6 +122,10 @@ public class WindowProductCreation : Window
 		if (building != null && building.autoCreation)
 			//autoButton.transform.localScale = Vector3.one * (0.8f - Mathf.Abs(Mathf.Sin (Time.time) * 0.2f));
 			autoButton.transform.Rotate(0, 0, -3);
+        if (gameObject.active == true)
+        {
+            WindowManager.Instance.GetWindow<WindowBuildingUpdating>().Close();
+        }
 	}
 
     void UpdateText()
@@ -161,6 +165,7 @@ public class WindowProductCreation : Window
 
     public void Open(Building b)
     {
+        
         building = b;
         inputTypecount1 = inputTypecount2 = count = 0;
         UpdateText();
