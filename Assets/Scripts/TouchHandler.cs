@@ -134,7 +134,7 @@ public class TouchHandler : MonoBehaviour
             //якщо відкрито вікно оновлення - закриваєм його
             if (upgradingWindow.selectedBuilding)
             {
-                if (hit.collider != null && hit.transform.tag == "Building")
+                /*if (hit.collider != null && hit.transform.tag == "Building")
                 {
                     var building = hit.transform.GetComponent<Building>();
                     if (upgradingWindow.selectedBuilding == building)
@@ -146,7 +146,7 @@ public class TouchHandler : MonoBehaviour
                             upgradingWindow.SetSelectedBuilding(null);
                         }
                     }
-                }
+                }*/
                 upgradingWindow.SetSelectedBuilding(null);
             }
             if (creatingWindow.selectedBuilding)
